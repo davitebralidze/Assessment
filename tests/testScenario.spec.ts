@@ -81,7 +81,6 @@ test('test assessment', async({page})=>{
 
     await page.mouse.up();
 
-
     Utils.deleteFile(testFilePath);
 
 })
