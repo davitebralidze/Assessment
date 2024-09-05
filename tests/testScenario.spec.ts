@@ -4,7 +4,7 @@ import { Utils } from '../utils/utils'
 const credentials = require('../credentials.json');
 
 test.beforeEach(async({page})=>{
-    await page.goto(credentials.URL);
+    await page.goto('/');
 })
 
 test('test assessment', async({page})=>{
@@ -48,9 +48,6 @@ test('test assessment', async({page})=>{
     await pm.onInboxPage().openTheLastReceivedMessage();
     await pm.onInboxPage().saveTheAttachmentOfTheMessageInDocuments();
     await pm.onLoggedInPage().clickOnDocumentsButton();
-
-
-    console.log(randomTextForSubjectAndFIleName)
 
     const attachment = page.getByTitle(`${randomTextForSubjectAndFIleName}.pdf`);
     const trash = page.locator('#doc_tree_trash');
