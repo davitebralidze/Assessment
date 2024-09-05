@@ -1,8 +1,7 @@
 # Mailfence automation
 
-## Credentials
 
-### For credentials create json file named credentials.json with a structure:
+### For credentials create json file named credentials.json in the project folder with a structure:
 ```json
 {
     "userEmail" : "userEmail",
