@@ -61,9 +61,9 @@ test('test assessment', async({page})=>{
     const box = await attachment.boundingBox();
 
     const x = box?.x;
-    const y = box?.y;
+    const y = box?.y?? + 200;
 
-    await page.mouse.move(x , y + 200);
+    await page.mouse.move(x ?? 0 , y ?? 0);
 
 
     await attachment.hover();
@@ -71,7 +71,7 @@ test('test assessment', async({page})=>{
 
     
     
-    await page.mouse.move(x, y + 200, { steps: 10 });
+    await page.mouse.move(x ?? 0, y ?? 0, { steps: 10 });
 
 
     await trash.hover();
