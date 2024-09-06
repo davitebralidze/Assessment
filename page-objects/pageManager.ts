@@ -5,6 +5,7 @@ import { LoggedInPageSteps } from './page-steps/loggedInPageSteps';
 import { MessagesPageSteps } from './page-steps/messagesPageSteps';
 import { NewMessagePageSteps } from './page-steps/newMessagePageSteps';
 import { InboxPageSteps } from './page-steps/inboxPageSteps'; 
+import { DocumentsPageSteps } from './page-steps/documentsPageSteps';
 export class PageManager {
 
     private readonly page: Page;
@@ -14,6 +15,7 @@ export class PageManager {
     private readonly messagesPage: MessagesPageSteps;
     private readonly newMessagePage: NewMessagePageSteps;
     private readonly inboxPage: InboxPageSteps;
+    private readonly documentsPage: DocumentsPageSteps;
 
     constructor (page: Page) {
         this.page = page;
@@ -23,6 +25,7 @@ export class PageManager {
         this.messagesPage = new MessagesPageSteps(page);
         this.newMessagePage = new NewMessagePageSteps(page);
         this.inboxPage = new InboxPageSteps(page);
+        this.documentsPage = new DocumentsPageSteps(page);
 
     }
 
@@ -48,6 +51,10 @@ export class PageManager {
 
     onInboxPage() {
         return this.inboxPage;
+    }
+
+    onDocumentsPage() {
+        return this.documentsPage;
     }
 
 }

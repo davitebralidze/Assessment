@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test'
 
-export class DocumentsPage {
+export class DocumentsPageLocators {
 
     protected readonly page;
 

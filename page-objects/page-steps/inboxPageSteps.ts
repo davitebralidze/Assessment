@@ -1,6 +1,5 @@
 import { Page } from "@playwright/test";
 import { InboxPageLocators } from "../page-locators/inboxPageLocators";
-import { TIMEOUT } from "dns";
 
 export class InboxPageSteps extends InboxPageLocators{
 

@@ -9,21 +9,18 @@ test.beforeEach(async({page})=>{
 
 test('test assessment', async({page})=>{
 
+    const pm = new PageManager(page);
     const randomTextForSubjectAndFIleName = Utils.returnDefaultString();
     const userEmail = credentials.userEmail;
     const userPassword = credentials.password;
     const testFilePath = `test-files/${randomTextForSubjectAndFIleName}.pdf`;
+    const attachment = page.getByTitle(`${randomTextForSubjectAndFIleName}.pdf`);
     await Utils.createTestFileFromExistingOne(randomTextForSubjectAndFIleName);
-
-    const pm = new PageManager(page);
 
     await pm.onLandingPage().clickOnLogInButton();
     await pm.onLoginPage().enterEmail(userEmail);
     await pm.onLoginPage().enterPassword(userPassword);
     await pm.onLoginPage().clickEnterButton();
-
-    //wait for login animation code here
-
     await pm.onLoggedInPage().clickOnMessagesButton();
     await pm.onMessagesPage().clickOnNewMessageButton();
     await pm.onNewMessagePage().clickOnAttachmentButton();
@@ -33,7 +30,6 @@ test('test assessment', async({page})=>{
     await page.waitForSelector(await pm.onNewMessagePage().returnCheckboxForTheUploadedFile());
     await pm.onNewMessagePage().clickOnSendButton();
     
-    //this case is missing an assertion in case the element did not come
     var isTheLastMessageVisible = false;
     while(!isTheLastMessageVisible) {
         isTheLastMessageVisible = await page.locator('div #gwt-uid-9 tr td').nth(2).locator('div .listSubject', {hasText: randomTextForSubjectAndFIleName}).isVisible();
@@ -48,36 +44,10 @@ test('test assessment', async({page})=>{
     await pm.onInboxPage().openTheLastReceivedMessage();
     await pm.onInboxPage().saveTheAttachmentOfTheMessageInDocuments();
     await pm.onLoggedInPage().clickOnDocumentsButton();
-
-    const attachment = page.getByTitle(`${randomTextForSubjectAndFIleName}.pdf`);
-    const trash = page.locator('#doc_tree_trash');
-
-
-    await attachment.scrollIntoViewIfNeeded();
-
-    const box = await attachment.boundingBox();
-
-    const x = box?.x;
-    const y = box?.y?? + 200;
-
-    await page.mouse.move(x ?? 0 , y ?? 0);
-
-
-    await attachment.hover();
-    await page.mouse.down();
-
-    
-    
-    await page.mouse.move(x ?? 0, y ?? 0, { steps: 10 });
-
-
-    await trash.hover();
-    await trash.hover();
-
-
-
-    await page.mouse.up();
-
+    await pm.onDocumentsPage().dragDesiredAttachmentToTrash(attachment);
+    await pm.onDocumentsPage().clickOnTrashButton();
+    await attachment.waitFor({state: "visible"});
+    await expect(attachment).toBeVisible();
     Utils.deleteFile(testFilePath);
-
+    await pm.onDocumentsPage().clearTrash();
 })
