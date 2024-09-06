@@ -26,7 +26,6 @@ export class PageManager {
         this.newMessagePage = new NewMessagePageSteps(page);
         this.inboxPage = new InboxPageSteps(page);
         this.documentsPage = new DocumentsPageSteps(page);
-
     }
 
     onLoginPage() {
