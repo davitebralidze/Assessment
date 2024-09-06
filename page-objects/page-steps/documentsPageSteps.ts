@@ -11,8 +11,8 @@ export class DocumentsPageSteps extends DocumentsPageLocators {
         await this.trashButton.click();
     }
 
-    async clearTrash() {
-        await this.page.getByTitle('Select all').click();
+    async deleteAttachmentFromTrash(attachemntToDelete: Locator) {
+        await attachemntToDelete.click();
         await this.page.getByTitle('Delete').click();
         await this.page.locator('div.btnCtn', {hasText: "Yes"}).click();
     }

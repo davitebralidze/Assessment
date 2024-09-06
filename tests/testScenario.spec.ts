@@ -49,5 +49,5 @@ test('test assessment', async({page})=>{
     await attachment.waitFor({state: "visible"});
     await expect(attachment).toBeVisible();
     Utils.deleteFile(testFilePath);
-    await pm.onDocumentsPage().clearTrash();
+    await pm.onDocumentsPage().deleteAttachmentFromTrash(attachment);
 })
