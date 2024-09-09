@@ -51,6 +51,9 @@ test('test assessment', async({page})=>{
     await expect(attachment).toBeVisible();
     Utils.deleteFile(testFilePath);
     await pm.onDocumentsPage().deleteAttachmentFromTrash(attachment);
-    await page.close();
 })
 //#endregion
+
+    test.afterAll(async({page})=>{
+        await page.close();
+    })
