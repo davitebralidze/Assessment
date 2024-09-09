@@ -7,7 +7,6 @@ test.beforeEach(async({page})=>{
     await page.goto('/');
 })
 
-//#region Test scenarion
 test('test assessment', async({page})=>{
 
     const pm = new PageManager(page);
@@ -52,7 +51,6 @@ test('test assessment', async({page})=>{
     Utils.deleteFile(testFilePath);
     await pm.onDocumentsPage().deleteAttachmentFromTrash(attachment);
 })
-//#endregion
 
     test.afterAll(async({page})=>{
         await page.close();
