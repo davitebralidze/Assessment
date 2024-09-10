@@ -36,5 +36,5 @@ test('test assessment', async({page})=>{
 })
 
 test.afterEach(async ({page})=>{
-    console.log('hello')
+    await page.close()
 })
