@@ -1,6 +1,5 @@
-import { expect, test } from '@playwright/test'
+import { test } from '@playwright/test'
 import { PageManager } from '../page-objects/pageManager'
-import { Utils } from '../utils/utils'
 import { faker } from '@faker-js/faker'
 const credentials = require('../credentials.json');
 
