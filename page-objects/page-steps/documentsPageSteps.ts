@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { Page } from "@playwright/test";
 import { DocumentsPageLocators } from "../page-locators/documentsPageLocators";
 
 export class DocumentsPageSteps extends DocumentsPageLocators {
