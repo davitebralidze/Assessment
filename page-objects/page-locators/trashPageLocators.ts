@@ -1,14 +1,9 @@
-import { Page , Locator } from '@playwright/test'
+import { Page , Locator} from '@playwright/test'
 
-export class DocumentsPageLocators {
-
+export class TrashPageLocators {
     protected readonly page: Page;
-
-    protected readonly trashButton: Locator;
-
     constructor(page: Page) {
         this.page = page;
-        this.trashButton = page.locator('#doc_tree_trash');
     }
 
     protected readonly targetElement = (page, fileName) => page.getByTitle(`${fileName}.txt`);

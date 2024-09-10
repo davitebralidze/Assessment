@@ -1,17 +1,17 @@
-import { Page } from '@playwright/test'
+import { Page , Locator} from '@playwright/test'
 
 export class LoginPageLocators {
 
-    protected readonly page;
+    protected readonly page: Page;
 
-    protected readonly emailField;
-    protected readonly passwordField;
-    protected readonly enterButton;
+    protected readonly emailField: Locator;
+    protected readonly passwordField: Locator;
+    protected readonly enterButton: Locator;
 
     constructor(page: Page) {
         this.page = page;
         this.emailField = this.page.locator('#UserID');
         this.passwordField = this.page.locator('#Password');
-        this.enterButton = this.page.getByRole('button', {hasText: "Enter"});
+        this.enterButton = this.page.getByRole('button', {name: "Enter"});
     }
 }

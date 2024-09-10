@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test'
 import { PageManager } from '../page-objects/pageManager'
 import { Utils } from '../utils/utils'
+import { faker } from '@faker-js/faker'
 const credentials = require('../credentials.json');
 
 test.beforeEach(async({page})=>{
@@ -10,12 +11,9 @@ test.beforeEach(async({page})=>{
 test('test assessment', async({page})=>{
 
     const pm = new PageManager(page);
-    const randomTextForSubjectAndFIleName = Utils.returnDefaultString();
+    const randomTextForSubjectAndFIleName = faker.string.alphanumeric({length: 10});
     const userEmail = credentials.userEmail;
     const userPassword = credentials.password;
-    const testFilePath = `test-files/${randomTextForSubjectAndFIleName}.pdf`;
-    const attachment = page.getByTitle(`${randomTextForSubjectAndFIleName}.pdf`);
-    await Utils.createTestFileFromExistingOne(randomTextForSubjectAndFIleName);
 
     await pm.onLandingPage().clickOnLogInButton();
     await pm.onLoginPage().enterEmail(userEmail);
@@ -23,35 +21,20 @@ test('test assessment', async({page})=>{
     await pm.onLoginPage().clickEnterButton();
     await pm.onLoggedInPage().clickOnMessagesButton();
     await pm.onMessagesPage().clickOnNewMessageButton();
-    await pm.onNewMessagePage().clickOnAttachmentButton();
-    await pm.onNewMessagePage().uploadFileFromYourComputer(testFilePath);
     await pm.onNewMessagePage().fillEmailReceiverInput(userEmail);
     await pm.onNewMessagePage().fillSubjectInput(randomTextForSubjectAndFIleName);
-    await page.waitForSelector(await pm.onNewMessagePage().returnCheckboxForTheUploadedFile());
+    await pm.onNewMessagePage().clickOnAttachmentButton();
+    await pm.onNewMessagePage().uploadFileFromYourComputer(randomTextForSubjectAndFIleName);
     await pm.onNewMessagePage().clickOnSendButton();
-    
-    var isTheLastMessageVisible = false;
-    while(!isTheLastMessageVisible) {
-        isTheLastMessageVisible = await page.locator('div #gwt-uid-9 tr td').nth(2).locator('div .listSubject', {hasText: randomTextForSubjectAndFIleName}).isVisible();
-        if(!isTheLastMessageVisible) {
-            await pm.onInboxPage().clickOnTheRefreshButton();
-            await page.waitForTimeout(1000);
-        } else {
-                isTheLastMessageVisible = true;
-        }
-    } await expect(pm.onInboxPage().returnTheLastReceivedMessageAsElement()).toContainText(randomTextForSubjectAndFIleName);
-
-    await pm.onInboxPage().openTheLastReceivedMessage();
+    await pm.onInboxPage().openTheMessage(randomTextForSubjectAndFIleName);
     await pm.onInboxPage().saveTheAttachmentOfTheMessageInDocuments();
     await pm.onLoggedInPage().clickOnDocumentsButton();
-    await pm.onDocumentsPage().dragDesiredAttachmentToTrash(attachment);
+    await pm.onDocumentsPage().dragDesiredAttachmentToTrash(randomTextForSubjectAndFIleName);
     await pm.onDocumentsPage().clickOnTrashButton();
-    await attachment.waitFor({state: "visible"});
-    await expect(attachment).toBeVisible();
-    Utils.deleteFile(testFilePath);
-    await pm.onDocumentsPage().deleteAttachmentFromTrash(attachment);
+    await pm.onTrashPage().checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFIleName);
+    await pm.onDocumentsPage().deleteAttachmentFromTrash(randomTextForSubjectAndFIleName);
 })
 
-    test.afterAll(async({page})=>{
-        await page.close();
-    })
+test.afterEach(async ({page})=>{
+    console.log('hello')
+})

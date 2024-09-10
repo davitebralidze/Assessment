@@ -1,11 +1,11 @@
-import { Page } from '@playwright/test'
+import { Page , Locator} from '@playwright/test'
 
 export class MessagesPageLocators {
 
-    protected readonly page;
+    protected readonly page: Page;
 
-    protected readonly newMessageButton;
-    protected readonly inboxButton;
+    protected readonly newMessageButton: Locator;
+    protected readonly inboxButton: Locator;
 
     constructor(page: Page) {
         this.page = page;

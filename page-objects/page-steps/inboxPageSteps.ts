@@ -7,21 +7,23 @@ export class InboxPageSteps extends InboxPageLocators{
         super(page);
     }
 
-    async returnSubjectOfTheLastReceivedMessage(){
-        return await this.lastReceivedMessage.getAttribute('title');
-    }
-
-    async openTheLastReceivedMessage() {
-        await this.lastReceivedMessage.click({force: true});
+    async openTheMessage(messageSubject: string) {
+        var isTheLastMessageVisible = false;
+        while(!isTheLastMessageVisible) {
+            isTheLastMessageVisible = await this.getTheRecievedMessageLocator(messageSubject).isVisible();
+            if(!isTheLastMessageVisible) {
+                await this.clickOnTheRefreshButton();
+                await this.page.waitForTimeout(1000);
+            } else {
+                    isTheLastMessageVisible = true;
+            }
+        }
+        await this.getTheRecievedMessageLocator(messageSubject).click({force: true})
     }
 
     async clickOnTheRefreshButton() {
         await this.refreshButton.click();
         }
-
-    returnTheLastReceivedMessageAsElement() {
-        return this.lastReceivedMessage;
-    }
 
     async saveTheAttachmentOfTheMessageInDocuments() {
         await this.attachmentOfTheReceivedMessage.hover();

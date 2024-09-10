@@ -6,6 +6,7 @@ import { MessagesPageSteps } from './page-steps/messagesPageSteps';
 import { NewMessagePageSteps } from './page-steps/newMessagePageSteps';
 import { InboxPageSteps } from './page-steps/inboxPageSteps'; 
 import { DocumentsPageSteps } from './page-steps/documentsPageSteps';
+import { TrashPageSteps } from './page-steps/trashPageSteps';
 export class PageManager {
 
     private readonly page: Page;
@@ -16,6 +17,7 @@ export class PageManager {
     private readonly newMessagePage: NewMessagePageSteps;
     private readonly inboxPage: InboxPageSteps;
     private readonly documentsPage: DocumentsPageSteps;
+    private readonly trashPage: TrashPageSteps;
 
     constructor (page: Page) {
         this.page = page;
@@ -26,6 +28,7 @@ export class PageManager {
         this.newMessagePage = new NewMessagePageSteps(page);
         this.inboxPage = new InboxPageSteps(page);
         this.documentsPage = new DocumentsPageSteps(page);
+        this.trashPage = new TrashPageSteps(page);
     }
 
     onLoginPage() {
@@ -54,6 +57,10 @@ export class PageManager {
 
     onDocumentsPage() {
         return this.documentsPage;
+    }
+
+    onTrashPage() {
+        return this.trashPage;
     }
 
 }

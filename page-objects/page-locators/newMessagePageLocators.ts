@@ -1,13 +1,14 @@
-import { Page } from '@playwright/test'
+import { Page , Locator } from '@playwright/test'
 
 export class NewMessagePageLocators {
 
-    protected readonly page;
-    protected readonly attachmentButton;
-    protected readonly attachFromComputerButtonInput;
-    protected readonly emailReceiverInput;
-    protected readonly sendButton;
-    protected readonly subjectInput;
+    protected readonly page: Page;
+    
+    protected readonly attachmentButton: Locator;
+    protected readonly attachFromComputerButtonInput: Locator;
+    protected readonly emailReceiverInput: Locator;
+    protected readonly sendButton: Locator;
+    protected readonly subjectInput: Locator;
     protected readonly checkboxForTheUploadedFile;
     
 
@@ -18,7 +19,7 @@ export class NewMessagePageLocators {
         this.emailReceiverInput = page.locator('#mailTo .GCSDBRWBPL');
         this.sendButton = page.locator('.btnCtn', {hasText: "Send"});
         this.subjectInput = page.locator('#mailSubject');
-        this.checkboxForTheUploadedFile = 'div .checkIcon';
+        this.checkboxForTheUploadedFile = page.locator('div .checkIcon');
     }
 
 }

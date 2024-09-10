@@ -1,33 +1,25 @@
+import { resolve } from "path";
+
+const fs = require('fs');
+const path = require('path')
+const { faker } = require('@faker-js/faker');
+
 export class Utils {
-
-    static createTestFileFromExistingOne(testFileName: string): Promise<string> {
-        const fs = require('fs');
-        const path = require('path');
-
-        const existingFilePath = path.join('test-files/lorem-ipsum.pdf');
-        const newFilePath = path.join(`test-files/${testFileName}.pdf`);
-
+    static createFile(fileName: string): Promise<void> {
+        const randomData = faker.lorem.paragraphs(5);
         return new Promise((resolve, reject) => {
-            fs.readFile(existingFilePath, (err, data) => {
+            fs.writeFile(`${fileName}.txt`, randomData, (err) => {
                 if (err) {
-                    return reject(`Error reading the file: ${err}`);
+                    return reject(`Error creating the file: ${err}`);
                 }
-                fs.writeFile(newFilePath, data, (err) => {
-                    if (err) {
-                        return reject(`Error writing the new file: ${err}`);
-                    }
-                    resolve(newFilePath);
-                });
-            });
-        });
+                resolve();
+            })
+        })
     }
 
-    static deleteFile(filePath: string): Promise<void> {
-        const fs = require('fs');
-        const path = require('path');
-
+    static deleteFile(fileName: string): Promise<void> {
         return new Promise((resolve, reject) => {
-            fs.unlink(path.join(filePath), (err) => {
+            fs.unlink(path.join(`${fileName}.txt`), (err) => {
                 if (err) {
                     return reject(`Error deleting the file: ${err}`);
                 }
@@ -35,9 +27,4 @@ export class Utils {
             });
         });
     }
-
-    static returnDefaultString () {
-        return (Math.random() + 1).toString(36).substring(2);
-    }
-
 }

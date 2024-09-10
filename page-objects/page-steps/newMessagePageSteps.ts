@@ -1,5 +1,6 @@
 import { Page } from '@playwright/test'
 import { NewMessagePageLocators } from '../page-locators/newMessagePageLocators'
+import { Utils } from '../../utils/utils.ts'
 
 export class NewMessagePageSteps extends NewMessagePageLocators {
 
@@ -11,8 +12,11 @@ export class NewMessagePageSteps extends NewMessagePageLocators {
         await this.attachmentButton.click();
     }
 
-    async uploadFileFromYourComputer(pathToFile: string) {
-        await this.attachFromComputerButtonInput.setInputFiles(pathToFile);
+    async uploadFileFromYourComputer(fileName: string) {
+        await Utils.createFile(fileName);
+        await this.attachFromComputerButtonInput.setInputFiles(`${fileName}.txt`);
+        await this.checkboxForTheUploadedFile.waitFor({state:'visible'});
+        await Utils.deleteFile(fileName);
     }
 
     async fillEmailReceiverInput(sendTo: string) {
@@ -25,10 +29,6 @@ export class NewMessagePageSteps extends NewMessagePageLocators {
 
     async fillSubjectInput(subject: string) {
         await this.subjectInput.fill(subject);
-    }
-
-    returnCheckboxForTheUploadedFile() {
-        return this.checkboxForTheUploadedFile;
     }
 
 }
