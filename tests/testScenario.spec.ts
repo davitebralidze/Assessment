@@ -11,16 +11,14 @@ test.beforeEach(async({page})=>{
 test('test assessment', async({page})=>{
     const pm = new PageManager(page);
     const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
-    const userEmail = credentials.userEmail;
-    const userPassword = credentials.password;
 
     await pm.onLandingPage().clickOnLogInButton();
-    await pm.onLoginPage().enterEmail(userEmail);
-    await pm.onLoginPage().enterPassword(userPassword);
+    await pm.onLoginPage().enterEmail(credentials.userEmail);
+    await pm.onLoginPage().enterPassword(credentials.password);
     await pm.onLoginPage().clickEnterButton();
     await pm.onLoggedInPage().clickOnMessagesButton();
     await pm.onMessagesPage().clickOnNewMessageButton();
-    await pm.onNewMessagePage().fillEmailReceiverInput(userEmail);
+    await pm.onNewMessagePage().fillEmailReceiverInput(credentials.userEmail);
     await pm.onNewMessagePage().fillSubjectInput(randomTextForSubjectAndFileName);
     await pm.onNewMessagePage().clickOnAttachmentButton();
     await pm.onNewMessagePage().uploadFileFromYourComputer(randomTextForSubjectAndFileName);
