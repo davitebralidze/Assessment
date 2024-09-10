@@ -1,34 +1,32 @@
-import { Page } from '@playwright/test'
-import { NewMessagePageLocators } from '../page-locators/newMessagePageLocators'
-import { Utils } from '../../utils/utils.ts'
+import { Page } from "@playwright/test";
+import { NewMessagePageLocators } from "../page-locators/newMessagePageLocators";
+import { Utils } from "../../utils/utils.ts";
 
 export class NewMessagePageSteps extends NewMessagePageLocators {
+  constructor(page: Page) {
+    super(page);
+  }
 
-    constructor(page: Page) {
-        super(page);
-    }
+  async clickOnAttachmentButton() {
+    await this.attachmentButton.click();
+  }
 
-    async clickOnAttachmentButton() {
-        await this.attachmentButton.click();
-    }
+  async uploadFileFromYourComputer(fileName: string) {
+    await Utils.createFile(fileName);
+    await this.attachFromComputerButtonInput.setInputFiles(`${fileName}.txt`);
+    await this.checkboxForTheUploadedFile.waitFor({ state: "visible" });
+    await Utils.deleteFile(fileName);
+  }
 
-    async uploadFileFromYourComputer(fileName: string) {
-        await Utils.createFile(fileName);
-        await this.attachFromComputerButtonInput.setInputFiles(`${fileName}.txt`);
-        await this.checkboxForTheUploadedFile.waitFor({state:'visible'});
-        await Utils.deleteFile(fileName);
-    }
+  async fillEmailReceiverInput(sendTo: string) {
+    await this.emailReceiverInput.fill(sendTo);
+  }
 
-    async fillEmailReceiverInput(sendTo: string) {
-        await this.emailReceiverInput.fill(sendTo);
-    }
-    
-    async clickOnSendButton() {
-        await this.sendButton.click();
-    }
+  async clickOnSendButton() {
+    await this.sendButton.click();
+  }
 
-    async fillSubjectInput(subject: string) {
-        await this.subjectInput.fill(subject);
-    }
-
+  async fillSubjectInput(subject: string) {
+    await this.subjectInput.fill(subject);
+  }
 }
