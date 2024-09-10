@@ -9,7 +9,6 @@ test.beforeEach(async({page})=>{
 })
 
 test('test assessment', async({page})=>{
-
     const pm = new PageManager(page);
     const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
     const userEmail = credentials.userEmail;
