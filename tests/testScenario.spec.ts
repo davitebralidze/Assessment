@@ -11,7 +11,7 @@ test.beforeEach(async({page})=>{
 test('test assessment', async({page})=>{
 
     const pm = new PageManager(page);
-    const randomTextForSubjectAndFIleName = faker.string.alphanumeric({length: 10});
+    const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
     const userEmail = credentials.userEmail;
     const userPassword = credentials.password;
 
@@ -22,17 +22,17 @@ test('test assessment', async({page})=>{
     await pm.onLoggedInPage().clickOnMessagesButton();
     await pm.onMessagesPage().clickOnNewMessageButton();
     await pm.onNewMessagePage().fillEmailReceiverInput(userEmail);
-    await pm.onNewMessagePage().fillSubjectInput(randomTextForSubjectAndFIleName);
+    await pm.onNewMessagePage().fillSubjectInput(randomTextForSubjectAndFileName);
     await pm.onNewMessagePage().clickOnAttachmentButton();
-    await pm.onNewMessagePage().uploadFileFromYourComputer(randomTextForSubjectAndFIleName);
+    await pm.onNewMessagePage().uploadFileFromYourComputer(randomTextForSubjectAndFileName);
     await pm.onNewMessagePage().clickOnSendButton();
-    await pm.onInboxPage().openTheMessage(randomTextForSubjectAndFIleName);
+    await pm.onInboxPage().openTheMessage(randomTextForSubjectAndFileName);
     await pm.onInboxPage().saveTheAttachmentOfTheMessageInDocuments();
     await pm.onLoggedInPage().clickOnDocumentsButton();
-    await pm.onDocumentsPage().dragDesiredAttachmentToTrash(randomTextForSubjectAndFIleName);
+    await pm.onDocumentsPage().dragDesiredAttachmentToTrash(randomTextForSubjectAndFileName);
     await pm.onDocumentsPage().clickOnTrashButton();
-    await pm.onTrashPage().checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFIleName);
-    await pm.onDocumentsPage().deleteAttachmentFromTrash(randomTextForSubjectAndFIleName);
+    await pm.onTrashPage().checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFileName);
+    await pm.onDocumentsPage().deleteAttachmentFromTrash(randomTextForSubjectAndFileName);
 })
 
 test.afterEach(async ({page})=>{
