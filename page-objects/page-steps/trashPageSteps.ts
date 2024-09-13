@@ -6,6 +6,10 @@ export class TrashPageSteps extends TrashPageLocators {
     super(page);
   }
 
+  async takeScreenShot(fileName: string) {
+    await this.page.screenshot({path: `screenshots/${fileName}.png`});
+  }
+
   async checkIfTheElementWasMovedToTrash(attachemntName: string) {
     await expect(this.targetElement(this.page, attachemntName)).toBeVisible();
   }
