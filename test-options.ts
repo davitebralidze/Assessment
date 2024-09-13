@@ -2,17 +2,17 @@ import { test as base } from "@playwright/test";
 import { PageManager } from "./page-objects/pageManager";
 
 export type TestOptions = {
-  config: string;
+  setupAndTeardown: string;
   pm: PageManager;
 };
 
 export const test = base.extend<TestOptions>({
-  config: async ({ page }, use) => {
+  setupAndTeardown: async ({ page }, use) => {
     await page.goto("/");
     await use("");
     await page.close();
   },
-  pm: async ({ page, config }, use) => {
+  pm: async ({ page, setupAndTeardown }, use) => {
     const pm = new PageManager(page);
     await use(pm);
   },
