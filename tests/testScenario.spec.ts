@@ -1,14 +1,8 @@
-import { test } from '@playwright/test'
-import { PageManager } from '../page-objects/pageManager'
 import { faker } from '@faker-js/faker'
-const credentials = require('../credentials.json');
+import { test } from '../test-options'
+const credentials = require('../credentials.json')
 
-test.beforeEach(async({page})=>{
-    await page.goto('/');
-})
-
-test('test assessment', async({page})=>{
-    const pm = new PageManager(page);
+test('test assessment', async({pm})=>{
     const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
 
     await pm.onLandingPage().clickOnLogInButton();
@@ -29,8 +23,4 @@ test('test assessment', async({page})=>{
     await pm.onDocumentsPage().clickOnTrashButton();
     await pm.onTrashPage().checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFileName);
     await pm.onDocumentsPage().deleteAttachmentFromTrash(randomTextForSubjectAndFileName);
-})
-
-test.afterEach(async ({page})=>{
-    await page.close()
 })
