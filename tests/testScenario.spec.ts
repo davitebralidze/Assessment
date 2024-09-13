@@ -28,7 +28,6 @@ test('test assessment', async({page})=>{
     await pm.onDocumentsPage().dragDesiredAttachmentToTrash(randomTextForSubjectAndFileName);
     await pm.onDocumentsPage().clickOnTrashButton();
     await pm.onTrashPage().checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFileName);
-    await pm.onTrashPage().takeScreenShot('scrrenshotOfTheMessage');
     await pm.onDocumentsPage().deleteAttachmentFromTrash(randomTextForSubjectAndFileName);
 })
 
