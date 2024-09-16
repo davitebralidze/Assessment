@@ -8,14 +8,17 @@ export class InboxPageSteps extends InboxPageLocators {
 
   async openTheMessage(messageSubject: string) {
     var isTheLastMessageVisible = false;
-    while (!isTheLastMessageVisible) {
-      isTheLastMessageVisible = await this.getTheReceivedMessageLocator(messageSubject).isVisible();
+    var retry = 0;
+    while (!isTheLastMessageVisible && retry < 6) {
+      isTheLastMessageVisible = await (await this.getTheReceivedMessageLocator(messageSubject)).isVisible();
       if (!isTheLastMessageVisible) {
         await this.clickOnTheRefreshButton();
         await this.page.waitForTimeout(1000);
+        retry ++;
       }
     }
-    await this.getTheReceivedMessageLocator(messageSubject).click({force: true});
+    //I did not move this timeout in config because I only need 1 second timeout for this specific case
+    await this.getTheReceivedMessageLocator(messageSubject).click({ timeout: 1000});
   }
 
   async clickOnTheRefreshButton() {

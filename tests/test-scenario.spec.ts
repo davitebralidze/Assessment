@@ -23,6 +23,10 @@ test('test assessment', async({pm})=>{
     await pm.onTrashPage().checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFileName);
 })
 
-test.afterEach(async({pm}) => {
-    await pm.onDocumentsPage().deleteAttachmentFromTrash(randomTextForSubjectAndFileName);
+test.afterEach(async({pm}, testInfo) => {
+    if(testInfo.status === 'failed') {
+        return;
+    } else {
+        await pm.onDocumentsPage().deleteAttachmentFromTrash(randomTextForSubjectAndFileName);
+    }
 });
