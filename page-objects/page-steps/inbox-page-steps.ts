@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { InboxPageLocators } from "../page-locators/inboxPageLocators";
+import { InboxPageLocators } from "../page-locators/inbox-page-locators";
 
 export class InboxPageSteps extends InboxPageLocators {
   constructor(page: Page) {
@@ -9,19 +9,13 @@ export class InboxPageSteps extends InboxPageLocators {
   async openTheMessage(messageSubject: string) {
     var isTheLastMessageVisible = false;
     while (!isTheLastMessageVisible) {
-      isTheLastMessageVisible = await this.getTheReceivedMessageLocator(
-        messageSubject
-      ).isVisible();
+      isTheLastMessageVisible = await this.getTheReceivedMessageLocator(messageSubject).isVisible();
       if (!isTheLastMessageVisible) {
         await this.clickOnTheRefreshButton();
         await this.page.waitForTimeout(1000);
-      } else {
-        isTheLastMessageVisible = true;
       }
     }
-    await this.getTheReceivedMessageLocator(messageSubject).click({
-      force: true,
-    });
+    await this.getTheReceivedMessageLocator(messageSubject).click({force: true});
   }
 
   async clickOnTheRefreshButton() {

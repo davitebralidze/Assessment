@@ -1,4 +1,4 @@
-import { TrashPageLocators } from "../page-locators/trashPageLocators";
+import { TrashPageLocators } from "../page-locators/trash-page-locators";
 import { expect, Page } from "@playwright/test";
 
 export class TrashPageSteps extends TrashPageLocators {
@@ -7,6 +7,6 @@ export class TrashPageSteps extends TrashPageLocators {
   }
 
   async checkIfTheElementWasMovedToTrash(attachemntName: string) {
-    await expect(this.targetElement(this.page, attachemntName)).toBeVisible();
+    await expect(this.targetElement(attachemntName)).toBeVisible();
   }
 }

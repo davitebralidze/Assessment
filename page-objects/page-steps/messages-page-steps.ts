@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { MessagesPageLocators } from "../page-locators/messagesPageLocators";
+import { MessagesPageLocators } from "../page-locators/messages-page-locators";
 
 export class MessagesPageSteps extends MessagesPageLocators {
   constructor(page: Page) {

@@ -1,12 +1,12 @@
 import { Page } from "@playwright/test";
-import { LoginPageSteps } from "./page-steps/loginPageSteps";
-import { LandingPageSteps } from "./page-steps/landingPageSteps";
-import { LoggedInPageSteps } from "./page-steps/loggedInPageSteps";
-import { MessagesPageSteps } from "./page-steps/messagesPageSteps";
-import { NewMessagePageSteps } from "./page-steps/newMessagePageSteps";
-import { InboxPageSteps } from "./page-steps/inboxPageSteps";
-import { DocumentsPageSteps } from "./page-steps/documentsPageSteps";
-import { TrashPageSteps } from "./page-steps/trashPageSteps";
+import { LoginPageSteps } from "./page-steps/login-page-steps";
+import { LandingPageSteps } from "./page-steps/landing-page-steps";
+import { LoggedInPageSteps } from "./page-steps/loggedin-page-steps";
+import { MessagesPageSteps } from "./page-steps/messages-page-steps";
+import { NewMessagePageSteps } from "./page-steps/newmessage-page-steps";
+import { InboxPageSteps } from "./page-steps/inbox-page-steps";
+import { DocumentsPageSteps } from "./page-steps/documents-page-steps";
+import { TrashPageSteps } from "./page-steps/trash-page-steps";
 export class PageManager {
   private readonly page: Page;
   private readonly loginPage: LoginPageSteps;

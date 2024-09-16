@@ -1,5 +1,5 @@
 import { test as base } from "@playwright/test";
-import { PageManager } from "./page-objects/pageManager";
+import { PageManager } from "./page-objects/page-manager";
 
 export type TestOptions = {
   setupAndTeardown: string;

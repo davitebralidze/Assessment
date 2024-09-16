@@ -10,6 +10,6 @@ export class DocumentsPageLocators {
     this.trashButton = page.locator("#doc_tree_trash");
   }
 
-  protected readonly targetElement = (page, fileName) =>
-    page.getByTitle(`${fileName}.txt`);
+  protected readonly targetElement = (fileName) =>
+    this.page.getByTitle(`${fileName}.txt`);
 }

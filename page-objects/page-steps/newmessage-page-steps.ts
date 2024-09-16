@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { NewMessagePageLocators } from "../page-locators/newMessagePageLocators";
+import { NewMessagePageLocators } from "../page-locators/new-message-page-locators.ts";
 import { Utils } from "../../utils/utils.ts";
 
 export class NewMessagePageSteps extends NewMessagePageLocators {

@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { LoggedInPageLocators } from "../page-locators/loggedInPageLocators";
+import { LoggedInPageLocators } from "../page-locators/loggedin-page-locators";
 
 export class LoggedInPageSteps extends LoggedInPageLocators {
   constructor(page: Page) {
