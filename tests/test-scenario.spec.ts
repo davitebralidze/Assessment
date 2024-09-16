@@ -20,13 +20,5 @@ test('test assessment', async({pm})=>{
     await pm.onLoggedInPage().clickOnDocumentsButton();
     await pm.onDocumentsPage().dragDesiredAttachmentToTrash(randomTextForSubjectAndFileName);
     await pm.onDocumentsPage().clickOnTrashButton();
-    await pm.onTrashPage().checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFileName);
+    await pm.onTrashPage().checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFileName, pm);
 })
-
-test.afterEach(async({pm}, testInfo) => {
-    if(testInfo.status === 'failed') {
-        return;
-    } else {
-        await pm.onDocumentsPage().deleteAttachmentFromTrash(randomTextForSubjectAndFileName);
-    }
-});
