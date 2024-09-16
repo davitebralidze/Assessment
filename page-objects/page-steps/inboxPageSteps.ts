@@ -9,7 +9,7 @@ export class InboxPageSteps extends InboxPageLocators {
   async openTheMessage(messageSubject: string) {
     var isTheLastMessageVisible = false;
     while (!isTheLastMessageVisible) {
-      isTheLastMessageVisible = await this.getTheRecievedMessageLocator(
+      isTheLastMessageVisible = await this.getTheReceivedMessageLocator(
         messageSubject
       ).isVisible();
       if (!isTheLastMessageVisible) {
@@ -19,7 +19,7 @@ export class InboxPageSteps extends InboxPageLocators {
         isTheLastMessageVisible = true;
       }
     }
-    await this.getTheRecievedMessageLocator(messageSubject).click({
+    await this.getTheReceivedMessageLocator(messageSubject).click({
       force: true,
     });
   }

@@ -1,10 +1,9 @@
 import { faker } from '@faker-js/faker'
 import { test } from '../test-options'
 const credentials = require('../credentials.json')
+const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
 
 test('test assessment', async({pm})=>{
-    const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
-
     await pm.onLandingPage().clickOnLogInButton();
     await pm.onLoginPage().enterEmail(credentials.userEmail);
     await pm.onLoginPage().enterPassword(credentials.password);
@@ -22,5 +21,8 @@ test('test assessment', async({pm})=>{
     await pm.onDocumentsPage().dragDesiredAttachmentToTrash(randomTextForSubjectAndFileName);
     await pm.onDocumentsPage().clickOnTrashButton();
     await pm.onTrashPage().checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFileName);
-    await pm.onDocumentsPage().deleteAttachmentFromTrash(randomTextForSubjectAndFileName);
 })
+
+test.afterEach(async({pm}) => {
+    await pm.onDocumentsPage().deleteAttachmentFromTrash(randomTextForSubjectAndFileName);
+});

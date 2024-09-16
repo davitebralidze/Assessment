@@ -29,7 +29,7 @@ export class InboxPageLocators {
     });
   }
 
-  getTheRecievedMessageLocator(messageSubject: string) {
+  getTheReceivedMessageLocator(messageSubject: string) {
     return this.page.locator("div.listSubject").getByText(messageSubject);
   }
 }

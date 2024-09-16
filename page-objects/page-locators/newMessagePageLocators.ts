@@ -8,7 +8,7 @@ export class NewMessagePageLocators {
   protected readonly emailReceiverInput: Locator;
   protected readonly sendButton: Locator;
   protected readonly subjectInput: Locator;
-  protected readonly checkboxForTheUploadedFile;
+  protected readonly checkboxForTheUploadedFile: Locator;
 
   constructor(page: Page) {
     this.page = page;
