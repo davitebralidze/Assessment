@@ -1,19 +1,25 @@
-import { test as base } from "@playwright/test";
-import { PageManager } from "./page-objects/page-manager";
+import {Page, test as base } from "@playwright/test";
 
 export type TestOptions = {
-  setupAndTeardown: string;
-  pm: PageManager;
+  customFixture: string;
+  customPage: Page;
 };
 
+let customPage: Page;
+
 export const test = base.extend<TestOptions>({
-  setupAndTeardown: async ({ page }, use) => {
+  customFixture: async ({ page }, use) => {
+    customPage = page;
     await page.goto("/");
     await use("");
     await page.close();
-  },
-  pm: async ({ page, setupAndTeardown }, use) => {
-    const pm = new PageManager(page);
-    await use(pm);
-  },
+  }
 });
+
+/**
+ * Returns the current Page.
+ * @returns {Page} The current Page.
+ */
+export function getPage() {
+  return customPage;
+}
