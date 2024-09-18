@@ -5,7 +5,4 @@ export class TrashPageLocators {
   constructor(page: Page) {
     this.page = page;
   }
-
-  protected readonly targetElement = (fileName) =>
-    this.page.getByTitle(`${fileName}.txt`);
 }
