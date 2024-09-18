@@ -1,7 +1,7 @@
 import { Page, Locator } from "@playwright/test";
 
 export class DocumentsPageLocators {
-  protected readonly page: Page;
+  private readonly page: Page;
 
   protected readonly trashButton: Locator;
 

@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 
 export class TrashPageLocators {
-  protected readonly page: Page;
+  private readonly page: Page;
   constructor(page: Page) {
     this.page = page;
   }

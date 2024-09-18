@@ -1,7 +1,7 @@
 import { Page, Locator } from "@playwright/test";
 
 export class InboxPageLocators {
-  protected readonly page: Page;
+  private readonly page: Page;
 
   protected readonly refreshButton: Locator;
   protected readonly uploadedFileButton: Locator;

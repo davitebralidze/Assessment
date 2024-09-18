@@ -1,7 +1,7 @@
 import { Page, Locator } from "@playwright/test";
 
 export class NewMessagePageLocators {
-  protected readonly page: Page;
+  private readonly page: Page;
 
   protected readonly attachmentButton: Locator;
   protected readonly attachFromComputerButtonInput: Locator;
