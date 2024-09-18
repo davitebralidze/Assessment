@@ -15,8 +15,8 @@ export class InboxPage {
 
     //#region Steps
     static async openTheMessage(messageSubject: string) {
-        var isTheLastMessageVisible = false;
-        var retry = 0;
+        let isTheLastMessageVisible = false;
+        let retry = 0;
         while (!isTheLastMessageVisible && retry < 11) {
           isTheLastMessageVisible = await this.recievedMessageLocator(messageSubject).isVisible();
           if (!isTheLastMessageVisible) {
