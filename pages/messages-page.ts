@@ -1,6 +1,6 @@
 import { getPage } from "../test-options";
 
-export class OnMessagesPage {
+export class MessagesPage {
     //#region Locators
     private static readonly newMessageButton = ()=> getPage().locator(".tbBtnText", { hasText: "New" });
     private static readonly inboxButton = ()=> getPage().locator("#treeInbox");

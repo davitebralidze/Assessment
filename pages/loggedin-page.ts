@@ -1,6 +1,6 @@
 import { getPage } from "../test-options";
 
-export class OnLoggedInPage {
+export class LoggedInPage {
     
     //#region Locators
     private static readonly messagesButton = ()=> getPage().locator("div .icon24-Message");

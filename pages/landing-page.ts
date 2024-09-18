@@ -1,6 +1,6 @@
 import { getPage } from "../test-options";
 
-export class OnLandingPage {
+export class LandingPage {
 
     //#region Locators
     private static readonly logInButton = ()=> getPage().locator("#signin");

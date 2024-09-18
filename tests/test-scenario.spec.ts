@@ -1,39 +1,39 @@
 import { faker } from '@faker-js/faker'
 import { test } from '../test-options'
-import { OnLandingPage } from '../pages/landing-page'
-import { OnLogInPage } from '../pages/login-page'
-import { OnLoggedInPage } from '../pages/loggedin-page'
-import { OnMessagesPage } from '../pages/messages-page'
-import { OnNewMessagesPage } from '../pages/newmessage-page'
-import { OnInboxPage} from '../pages/inbox-page'
-import { OnDocumentsPage } from '../pages/documents-page'
-import { OnTrashPage } from '../pages/trash-page'
+import { LandingPage } from '../pages/landing-page'
+import { LogInPage } from '../pages/login-page'
+import { LoggedInPage } from '../pages/loggedin-page'
+import { MessagesPage } from '../pages/messages-page'
+import { NewMessagesPage } from '../pages/newmessage-page'
+import { InboxPage} from '../pages/inbox-page'
+import { DocumentsPage } from '../pages/documents-page'
+import { TrashPage } from '../pages/trash-page'
 const credentials = require('../credentials.json');
 const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
 
 test('test assessment', async({customFixture})=>{
-    await OnLandingPage.clickOnLogInButton();
-    await OnLogInPage.enterEmail(credentials.userEmail);
-    await OnLogInPage.enterPassword(credentials.password);
-    await OnLogInPage.clickEnterButton();
-    await OnLoggedInPage.clickOnMessagesButton();
-    await OnMessagesPage.clickOnNewMessageButton();
-    await OnNewMessagesPage.fillEmailReceiverInput(credentials.userEmail);
-    await OnNewMessagesPage.fillSubjectInput(randomTextForSubjectAndFileName);
-    await OnNewMessagesPage.clickOnAttachmentButton();
-    await OnNewMessagesPage.uploadFileFromYourComputer(randomTextForSubjectAndFileName);
-    await OnNewMessagesPage.clickOnSendButton();
-    await OnInboxPage.openTheMessage(randomTextForSubjectAndFileName);
-    await OnInboxPage.saveTheAttachmentOfTheMessageInDocuments();
-    await OnLoggedInPage.clickOnDocumentsButton();
-    await OnDocumentsPage.dragDesiredAttachmentToTrash(randomTextForSubjectAndFileName);
-    await OnDocumentsPage.clickOnTrashButton();
-    await OnTrashPage.checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFileName);
+    await LandingPage.clickOnLogInButton();
+    await LogInPage.enterEmail(credentials.userEmail);
+    await LogInPage.enterPassword(credentials.password);
+    await LogInPage.clickEnterButton();
+    await LoggedInPage.clickOnMessagesButton();
+    await MessagesPage.clickOnNewMessageButton();
+    await NewMessagesPage.fillEmailReceiverInput(credentials.userEmail);
+    await NewMessagesPage.fillSubjectInput(randomTextForSubjectAndFileName);
+    await NewMessagesPage.clickOnAttachmentButton();
+    await NewMessagesPage.uploadFileFromYourComputer(randomTextForSubjectAndFileName);
+    await NewMessagesPage.clickOnSendButton();
+    await InboxPage.openTheMessage(randomTextForSubjectAndFileName);
+    await InboxPage.saveTheAttachmentOfTheMessageInDocuments();
+    await LoggedInPage.clickOnDocumentsButton();
+    await DocumentsPage.dragDesiredAttachmentToTrash(randomTextForSubjectAndFileName);
+    await DocumentsPage.clickOnTrashButton();
+    await TrashPage.checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFileName);
 })
 
 test.afterEach(async ({}, TestInfo) => {
     if(TestInfo.status==='passed') {
-        await OnTrashPage.deleteAttachmentFromTrash(randomTextForSubjectAndFileName);
+        await TrashPage.deleteAttachmentFromTrash(randomTextForSubjectAndFileName);
     } else {
         return;
     }

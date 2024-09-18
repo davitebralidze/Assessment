@@ -1,6 +1,6 @@
 import { getPage } from '../test-options'
 
-export class OnLogInPage {
+export class LogInPage {
 
     //#region Locators
     protected static readonly emailField = ()=> getPage().locator("#UserID");

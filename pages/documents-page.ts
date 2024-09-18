@@ -1,7 +1,7 @@
 import { getPage } from "../test-options";
 import { DynamicComponents } from "./dynamic-components";
 
-export class OnDocumentsPage extends DynamicComponents {
+export class DocumentsPage extends DynamicComponents {
   
   //#region Locators
   private static readonly trashButton = ()=> getPage().locator("#doc_tree_trash");

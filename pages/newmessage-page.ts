@@ -1,7 +1,7 @@
 import { getPage } from "../test-options";
 import { Utils } from "../utils/utils.ts";
 
-export class OnNewMessagesPage {
+export class NewMessagesPage {
     //#region Locators
     private static readonly attachmentButton = ()=> getPage().locator(".GCSDBRWBISB", {hasText: "Attachment",});
     private static readonly attachFromComputerButtonInput = ()=> getPage().locator('input[name="docgwt-uid-33"]');

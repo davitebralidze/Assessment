@@ -3,7 +3,7 @@ import { expect } from "@playwright/test";
 import { DynamicComponents } from "./dynamic-components";
 
 
-export class OnTrashPage {
+export class TrashPage {
 
     //#region Locators
     //#endregion

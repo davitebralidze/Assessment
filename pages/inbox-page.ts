@@ -1,6 +1,6 @@
 import { getPage } from "../test-options";
 
-export class OnInboxPage {
+export class InboxPage {
 
     //#region Locators
     private static readonly refreshButton = ()=> getPage().getByTitle("Refresh");
