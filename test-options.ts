@@ -8,12 +8,12 @@ export type TestOptions = {
 let customPage: Page;
 
 export const test = base.extend<TestOptions>({
-  customFixture: async ({ page }, use) => {
+  customFixture: [async ({ page }, use) => {
     customPage = page;
     await page.goto("/");
     await use("");
     await page.close();
-  }
+  }, {auto: true}]
 });
 
 /**

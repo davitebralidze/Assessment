@@ -11,7 +11,7 @@ import { TrashPage } from '../pages/trash-page'
 const credentials = require('../credentials.json');
 const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
 
-test('test assessment', async({customFixture})=>{
+test('test assessment', async({})=>{
     await LandingPage.clickOnLogInButton();
     await LogInPage.enterEmail(credentials.userEmail);
     await LogInPage.enterPassword(credentials.password);
