@@ -10,7 +10,7 @@ export class InboxPage {
     private static readonly saveInDocumentsButtonOfTheDropdown = ()=> getPage().locator("span.GCSDBRWBGR", {hasText: "Save in Documents",});
     private static readonly saveButtonOnTheFoldersPopup = ()=> getPage().locator('div[class="btn GCSDBRWBO defaultBtn"]');
     private static readonly myDocumentsInPopup = ()=> getPage().locator("div.treeItemLabel", {hasText: "My documents",});
-    private static readonly recievedMessageLocator = (messageSubject: string)=> getPage().locator("div.listSubject").getByText(messageSubject);
+    private static readonly receivedMessageLocator = (messageSubject: string)=> getPage().locator("div.listSubject").getByText(messageSubject);
     //#endregion
 
     //#region Steps
@@ -18,14 +18,14 @@ export class InboxPage {
         let isTheLastMessageVisible = false;
         let retry = 0;
         while (!isTheLastMessageVisible && retry < 11) {
-          isTheLastMessageVisible = await this.recievedMessageLocator(messageSubject).isVisible();
+          isTheLastMessageVisible = await this.receivedMessageLocator(messageSubject).isVisible();
           if (!isTheLastMessageVisible) {
             await this.clickOnTheRefreshButton();
             await getPage().waitForTimeout(1000);
             retry ++;
           }
         }
-        await this.recievedMessageLocator(messageSubject).click({force: true , timeout: 1000});
+        await this.receivedMessageLocator(messageSubject).click({force: true , timeout: 1000});
       }
     
     static async clickOnTheRefreshButton() {
