@@ -7,6 +7,7 @@ export class DocumentElement {
   //I might need to pass page in the constructor also because Im using getPage, but in case Ill use another fixture, this code might break
   constructor(fileName: string) {
     this.locator = getPage().getByTitle(`${fileName}.txt`);
+    this.fileName = fileName;
   }
 
   async dragAndDrop (destinationLocator: Locator) {
