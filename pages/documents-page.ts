@@ -1,10 +1,11 @@
+import { DocumentElement } from "../page-components/document-element";
 import { getPage } from "../page-fixtures/test-options";
-import { DynamicComponents } from "./dynamic-components";
 
-export class DocumentsPage extends DynamicComponents {
+export class DocumentsPage {
   
   //#region Locators
   private static readonly trashButton = ()=> getPage().locator("#doc_tree_trash");
+  private static readonly document = (attachmentName) => new DocumentElement(attachmentName).locator;
   //#endregion
 
 
@@ -14,12 +15,12 @@ export class DocumentsPage extends DynamicComponents {
   }
 
   static async dragDesiredAttachmentToTrash(attachmentName: string) {
-    await DynamicComponents.targetElement(attachmentName).scrollIntoViewIfNeeded();
-    const box = await DynamicComponents.targetElement(attachmentName).boundingBox();
+    await this.document(attachmentName).scrollIntoViewIfNeeded();
+    const box = await this.document(attachmentName).boundingBox();
     const x = box?.x;
     const y = box?.y ?? +200;
     await getPage().mouse.move(x ?? 0, y ?? 0);
-    await DynamicComponents.targetElement(attachmentName).hover();
+    await this.document(attachmentName).hover();
     await getPage().mouse.down();
     await getPage().mouse.move(x ?? 0, y ?? 0, { steps: 10 });
     await this.trashButton().hover();

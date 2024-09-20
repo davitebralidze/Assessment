@@ -1,20 +1,22 @@
 import { getPage } from "../page-fixtures/test-options";
+import { DocumentElement } from "../page-components/document-element";
 import { expect } from "@playwright/test";
-import { DynamicComponents } from "./dynamic-components";
 
 
 export class TrashPage {
 
     //#region Locators
+    private static readonly document = (attachmentName) => new DocumentElement(attachmentName).locator;
+
     //#endregion
 
     //#region Steps
     static async checkIfTheElementWasMovedToTrash(attachemntName: string) {
-        await expect(DynamicComponents.targetElement(attachemntName)).toBeVisible();
+        await expect(this.document(attachemntName)).toBeVisible();
     }
 
     static async deleteAttachmentFromTrash(attachemntName: string) {
-        await DynamicComponents.targetElement(attachemntName).click();
+        await this.document(attachemntName).click();
         await getPage().getByTitle("Delete").click();
         await getPage().locator("div.btnCtn", { hasText: "Yes" }).click();
     }

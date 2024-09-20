@@ -1,5 +1,6 @@
+//#region Imports & Declarations
 import { faker } from '@faker-js/faker'
-import { test } from '../test-options'
+import { test } from '../page-fixtures/test-options'
 import { LandingPage } from '../pages/landing-page'
 import { LogInPage } from '../pages/login-page'
 import { LoggedInPage } from '../pages/loggedin-page'
@@ -10,6 +11,7 @@ import { DocumentsPage } from '../pages/documents-page'
 import { TrashPage } from '../pages/trash-page'
 const credentials = require('../credentials.json');
 const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
+//#endregion
 
 test('test assessment', async({})=>{
     await LandingPage.clickOnLogInButton();
