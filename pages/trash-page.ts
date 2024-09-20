@@ -1,5 +1,5 @@
 import { getPage } from "../page-fixtures/test-options";
-import { DocumentElement } from "../page-components/document-element";
+import { DocumentElement } from "../common-components/document-element";
 import { expect } from "@playwright/test";
 
 
