@@ -1,4 +1,4 @@
-import { getPage } from "../test-options";
+import { getPage } from "../page-fixtures/test-options";
 import { Utils } from "../utils/utils.ts";
 
 export class NewMessagesPage {

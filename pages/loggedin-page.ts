@@ -1,4 +1,4 @@
-import { getPage } from "../test-options";
+import { getPage } from "../page-fixtures/test-options";
 
 export class LoggedInPage {
     

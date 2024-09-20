@@ -1,4 +1,4 @@
-import { getPage } from "../test-options";
+import { getPage } from "../page-fixtures/test-options";
 import { expect } from "@playwright/test";
 import { DynamicComponents } from "./dynamic-components";
 
@@ -20,4 +20,4 @@ export class TrashPage {
     }
     //#endregion
 
-}
+}``

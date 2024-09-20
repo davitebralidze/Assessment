@@ -1,4 +1,4 @@
-import { getPage } from "../test-options";
+import { getPage } from "../page-fixtures/test-options";
 import { DynamicComponents } from "./dynamic-components";
 
 export class DocumentsPage extends DynamicComponents {
