@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+import { timeStamp } from "console";
 
 export default defineConfig({
   reporter: [["html"], ["allure-playwright"]],
@@ -13,16 +14,19 @@ export default defineConfig({
   projects: [
     {
       name: "chromium",
+      testMatch: "test-scenario.spec.ts",
       use: { browserName: 'chromium', baseURL: "https://mailfence.com/" },
     },
 
     {
       name: "firefox",
+      testMatch: "test-scenario.spec.ts",
       use: { browserName: 'firefox', baseURL: "https://mailfence.com/" },
     },
 
     {
       name: "webkit",
+      testMatch: "test-scenario.spec.ts",
       use: { browserName: 'webkit', baseURL: "https://mailfence.com/" },
     },
   ],
