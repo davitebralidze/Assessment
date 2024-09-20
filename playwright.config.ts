@@ -13,17 +13,17 @@ export default defineConfig({
   projects: [
     {
       name: "chromium",
-      use: { browserName: 'chromium' },
+      use: { browserName: 'chromium', baseURL: "https://mailfence.com/" },
     },
 
     {
       name: "firefox",
-      use: { browserName: 'firefox' },
+      use: { browserName: 'firefox', baseURL: "https://mailfence.com/" },
     },
 
     {
       name: "webkit",
-      use: { browserName: 'webkit' },
+      use: { browserName: 'webkit', baseURL: "https://mailfence.com/" },
     },
   ],
 });
