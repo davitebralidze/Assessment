@@ -15,19 +15,19 @@ export default defineConfig({
     {
       name: "chromium",
       testMatch: "test-scenario.spec.ts",
-      use: { browserName: 'chromium', baseURL: "https://mailfence.com/" },
+      use: { browserName: 'chromium', baseURL: "https://mailfence.com/", viewport: {width: 1280, height: 720} },
     },
 
     {
       name: "firefox",
       testMatch: "test-scenario.spec.ts",
-      use: { browserName: 'firefox', baseURL: "https://mailfence.com/" },
+      use: { browserName: 'firefox', baseURL: "https://mailfence.com/", viewport: {width: 1280, height: 720} },
     },
 
     {
       name: "webkit",
       testMatch: "test-scenario.spec.ts",
-      use: { browserName: 'webkit', baseURL: "https://mailfence.com/" },
+      use: { browserName: 'webkit', baseURL: "https://mailfence.com/", viewport: {width: 1280, height: 720} },
     },
   ],
 });
