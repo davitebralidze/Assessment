@@ -20,5 +20,5 @@ export class TrashPage {
         await getPage().locator("div.btnCtn", { hasText: "Yes" }).click();
     }
     //#endregion
-
-}``
+    
+}
