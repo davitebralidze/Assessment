@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  reporter: [["html"], ["allure-playwright"]],
+  reporter: [["allure-playwright"]],
 
   use: {
     baseURL: "https://mailfence.com/",

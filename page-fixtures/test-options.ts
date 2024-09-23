@@ -1,4 +1,5 @@
 import {Page, test as base } from "@playwright/test";
+import { Utils } from "../utils/utils";
 
 export type TestOptions = {
   customFixture: string;
@@ -9,6 +10,7 @@ let customPage: Page;
 
 export const test = base.extend<TestOptions>({
   customFixture: [async ({ page }, use) => {
+    Utils.deleteFolder('allure-results');
     customPage = page;
     await page.goto("/");
     await use("");
