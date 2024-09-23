@@ -1,4 +1,4 @@
-import { DocumentElement } from "../common-components/document-element";
+import { DocumentElement } from "../page-components/document-element";
 import { getPage } from "../page-fixtures/test-options";
 
 export class DocumentsPage {
