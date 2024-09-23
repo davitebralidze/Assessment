@@ -10,7 +10,7 @@ let customPage: Page;
 
 export const test = base.extend<TestOptions>({
   customFixture: [async ({ page }, use) => {
-    Utils.deleteFolder('allure-results');
+    await Utils.deleteFolder('allure-results');
     customPage = page;
     await page.goto("/");
     await use("");
