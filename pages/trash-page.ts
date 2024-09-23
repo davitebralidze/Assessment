@@ -7,7 +7,6 @@ export class TrashPage {
 
     //#region Locators
     private static readonly document = (attachmentName) => new DocumentElement(attachmentName).locator;
-
     //#endregion
 
     //#region Steps
