@@ -9,7 +9,7 @@ export class InputElement{
     }
 
     public async fill(text: string) {
-        await test.step('Fill the input field', async ()=>{
+        await test.step(`Fill the input field with the next text: ${text}`, async ()=>{
             await this.locator.fill(text);
         })
     }
