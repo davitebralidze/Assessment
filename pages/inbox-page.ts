@@ -4,7 +4,6 @@ export class InboxPage {
 
     //#region Locators
     private static readonly refreshButton = ()=> getPage().getByTitle("Refresh");
-    private static readonly uploadedFileButton = ()=> getPage().locator("a.GCSDBRWBJRB");
     private static readonly attachmentOfTheReceivedMessage = ()=> getPage().locator("a.GCSDBRWBJRB");
     private static readonly optionsDropdownOfTheAttachentOfTheReceivedMessage = ()=> getPage().locator("b.icon-Arrow-down");
     private static readonly saveInDocumentsButtonOfTheDropdown = ()=> getPage().locator("span.GCSDBRWBGR", {hasText: "Save in Documents",});
