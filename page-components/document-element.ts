@@ -1,4 +1,4 @@
-import { Locator } from "@playwright/test";
+import { expect, Locator } from "@playwright/test";
 import { getPage, test } from "../page-fixtures/test-options";
 import { BaseElement } from "./base-element";
 
@@ -11,7 +11,7 @@ export class DocumentElement extends BaseElement {
     this.fileName = fileName;
   }
 
-  async dragAndDrop (destinationLocator: Locator) {
+  public async dragAndDrop (destinationLocator: Locator) {
     await test.step(`Drag and drop a document with title ${this.fileName} to another locator`, async () => {
       await this.locator.scrollIntoViewIfNeeded();
       const box = await this.locator.boundingBox();
@@ -26,5 +26,11 @@ export class DocumentElement extends BaseElement {
       await getPage().mouse.up();
     })
   }
+
+  public async expectTheDocumentToBeVisible() {
+    await test.step('Check whether the element is visible or not', async ()=>{
+      await expect(this.locator).toBeVisible();
+    })
+}
 
 }
