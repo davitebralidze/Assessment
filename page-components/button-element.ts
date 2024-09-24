@@ -1,11 +1,11 @@
 import { Locator } from '@playwright/test';
 import { test } from '../page-fixtures/test-options.ts'
+import { BaseElement } from './base-element.ts';
 
-export class ButtonElement {
-    locator: Locator
+export class ButtonElement extends BaseElement{
 
     constructor (locator: Locator) {
-        this.locator = locator;
+        super(locator);
     }
 
     public async click() {
@@ -13,4 +13,11 @@ export class ButtonElement {
             await this.locator.click();
         })
     }
+
+    public async forceClick() {
+        await test.step('Force-click on button', async ()=>{
+            await this.locator.click({force:true});
+        })
+    }
+
 }

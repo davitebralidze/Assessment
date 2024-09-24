@@ -1,15 +1,17 @@
 import { getPage } from "../page-fixtures/test-options";
+import { ButtonElement } from "../page-components/button-element";
+import { BaseElement } from "../page-components/base-element";
 
 export class InboxPage {
 
     //#region Locators
-    private static readonly refreshButton = ()=> getPage().getByTitle("Refresh");
-    private static readonly attachmentOfTheReceivedMessage = ()=> getPage().locator("a.GCSDBRWBJRB");
-    private static readonly optionsDropdownOfTheAttachentOfTheReceivedMessage = ()=> getPage().locator("b.icon-Arrow-down");
-    private static readonly saveInDocumentsButtonOfTheDropdown = ()=> getPage().locator("span.GCSDBRWBGR", {hasText: "Save in Documents",});
-    private static readonly saveButtonOnTheFoldersPopup = ()=> getPage().locator('div[class="btn GCSDBRWBO defaultBtn"]');
-    private static readonly myDocumentsInPopup = ()=> getPage().locator("div.treeItemLabel", {hasText: "My documents",});
-    private static readonly receivedMessageLocator = (messageSubject: string)=> getPage().locator("div.listSubject").getByText(messageSubject);
+    private static readonly refreshButton = ()=> new ButtonElement(getPage().getByTitle("Refresh"));
+    private static readonly attachmentOfTheReceivedMessage = ()=> new BaseElement(getPage().locator("a.GCSDBRWBJRB"));
+    private static readonly optionsDropdownButtonOfTheAttachentOfTheReceivedMessage = ()=> new ButtonElement(getPage().locator("b.icon-Arrow-down"));
+    private static readonly saveInDocumentsButtonOfTheDropdown = ()=> new ButtonElement(getPage().locator("span.GCSDBRWBGR", {hasText: "Save in Documents"}));
+    private static readonly saveButtonOnTheFoldersPopup = ()=> new ButtonElement(getPage().locator('div[class="btn GCSDBRWBO defaultBtn"]'));
+    private static readonly myDocumentsButtonInPopup = ()=> getPage().locator("div.treeItemLabel", {hasText: "My documents"});
+    private static readonly receivedMessageLocator = (messageSubject: string)=> new BaseElement(getPage().locator("div.listSubject").getByText(messageSubject));
     //#endregion
 
     //#region Steps
@@ -24,7 +26,7 @@ export class InboxPage {
             retry ++;
           }
         }
-        await this.receivedMessageLocator(messageSubject).click({force: true , timeout: 1000});
+        await this.receivedMessageLocator(messageSubject).forceClickWithATimeout(1000);
       }
     
     static async clickOnTheRefreshButton() {
@@ -33,11 +35,11 @@ export class InboxPage {
     
     static  async saveTheAttachmentOfTheMessageInDocuments() {
         await this.attachmentOfTheReceivedMessage().hover();
-        await this.optionsDropdownOfTheAttachentOfTheReceivedMessage().click();
-        await this.saveInDocumentsButtonOfTheDropdown().click({ force: true });
-        await this.myDocumentsInPopup().click();
-        await this.saveButtonOnTheFoldersPopup().waitFor({ state: "attached" });
-        await this.saveButtonOnTheFoldersPopup().click({ force: true });
+        await this.optionsDropdownButtonOfTheAttachentOfTheReceivedMessage().click();
+        await this.saveInDocumentsButtonOfTheDropdown().forceClick();
+        await this.myDocumentsButtonInPopup().click();
+        await this.saveButtonOnTheFoldersPopup().waitForTheElementToBeAttached();
+        await this.saveButtonOnTheFoldersPopup().forceClick();
       }
     //#endregion
 

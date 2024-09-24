@@ -1,10 +1,11 @@
 import { getPage } from "../page-fixtures/test-options";
+import { ButtonElement } from '../page-components/button-element'
 
 export class LoggedInPage {
     
     //#region Locators
-    private static readonly messagesButton = ()=> getPage().locator("div .icon24-Message");
-    private static readonly documentsButton = ()=> getPage().locator("div.icon24-Documents");
+    private static readonly messagesButton = ()=> new ButtonElement(getPage().locator("div .icon24-Message"));
+    private static readonly documentsButton = ()=> new ButtonElement(getPage().locator("div.icon24-Documents"));
     //#endregion
 
     //#region Steps

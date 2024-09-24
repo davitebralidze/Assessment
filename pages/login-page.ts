@@ -1,20 +1,21 @@
 import { getPage } from "../page-fixtures/test-options";
-
+import { InputElement } from "../page-components/input-element"
+import { ButtonElement } from "../page-components/button-element";
 export class LogInPage {
 
     //#region Locators
-    protected static readonly emailField = ()=> getPage().locator("#UserID");
-    protected static readonly passwordField = ()=> getPage().locator("#Password");
-    protected static readonly enterButton = ()=> getPage().getByRole("button", { name: "Enter" });
+    protected static readonly emailInputField = ()=> new InputElement(getPage().locator("#UserID"));
+    protected static readonly passwordInputField = ()=> new InputElement(getPage().locator("#Password"));
+    protected static readonly enterButton = ()=> new ButtonElement(getPage().getByRole("button", { name: "Enter" }));
     //#endregion
 
     //#region Steps
     static async enterEmail(email: string) {
-        await this.emailField().fill(email);
+        await this.emailInputField().fill(email);
     }
     
     static async enterPassword(password: string) {
-        await this.passwordField().fill(password);
+        await this.passwordInputField().fill(password);
     }
     
     static async clickEnterButton() {

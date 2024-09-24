@@ -1,14 +1,17 @@
 import { getPage } from "../page-fixtures/test-options";
 import { Utils } from "../utils/utils.ts";
+import { ButtonElement } from "../page-components/button-element.ts"
+import { InputElement } from "../page-components/input-element.ts"
+import { CheckboxElement } from "../page-components/checkbox-element.ts";
 
 export class NewMessagesPage {
     //#region Locators
-    private static readonly attachmentButton = ()=> getPage().locator(".GCSDBRWBISB", {hasText: "Attachment",});
-    private static readonly attachFromComputerButtonInput = ()=> getPage().locator('input[name="docgwt-uid-33"]');
-    private static readonly emailReceiverInput = ()=> getPage().locator("#mailTo .GCSDBRWBPL");
-    private static readonly sendButton = ()=> getPage().locator(".btnCtn", { hasText: "Send" });
-    private static readonly subjectInput = ()=> getPage().locator("#mailSubject");
-    private static readonly checkboxForTheUploadedFile = ()=> getPage().locator("div .checkIcon");
+    private static readonly attachmentButton = ()=> new ButtonElement(getPage().locator(".GCSDBRWBISB", {hasText: "Attachment",}));
+    private static readonly attachFromComputerButtonInput = ()=> new InputElement(getPage().locator('input[name="docgwt-uid-33"]'));
+    private static readonly emailReceiverInput = ()=> new InputElement(getPage().locator("#mailTo .GCSDBRWBPL"));
+    private static readonly sendButton = ()=> new ButtonElement(getPage().locator(".btnCtn", { hasText: "Send" }));
+    private static readonly subjectInput = ()=> new InputElement(getPage().locator("#mailSubject"));
+    private static readonly checkboxForTheUploadedFile = ()=> new CheckboxElement(getPage().locator("div .checkIcon"));
     //#endregion
 
     //#region Steps
@@ -19,7 +22,7 @@ export class NewMessagesPage {
     static async uploadFileFromYourComputer(fileName: string) {
         await Utils.createFile(fileName);
         await this.attachFromComputerButtonInput().setInputFiles(`${fileName}.txt`);
-        await this.checkboxForTheUploadedFile().waitFor({ state: "visible" });
+        await this.checkboxForTheUploadedFile().waitForCheckBoxToBeVisible();
         await Utils.deleteFile(fileName);
     }
     
