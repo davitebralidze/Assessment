@@ -1,7 +1,7 @@
 import { Locator } from '@playwright/test';
 import { test } from '../page-fixtures/test-options.ts'
-export class ButtonElement {
 
+export class ButtonElement {
     locator: Locator
 
     constructor (locator: Locator) {
@@ -13,6 +13,4 @@ export class ButtonElement {
             await this.locator.click();
         })
     }
-
-
 }

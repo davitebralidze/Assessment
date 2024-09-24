@@ -15,12 +15,6 @@ export class BaseElement {
         })
     }
 
-    public async fill(text: string) {
-        await test.step('Fill the input field', async ()=>{
-            await this.locator.fill(text);
-        })
-    }
-
     public async hover() {
         await test.step('Hover over the element', async ()=>{
             await this.locator.hover();
