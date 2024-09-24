@@ -7,17 +7,5 @@ export class ButtonElement extends BaseElement{
     constructor (locator: Locator) {
         super(locator);
     }
-
-    public async click() {
-        await test.step('Click on button', async ()=>{
-            await this.locator.click();
-        })
-    }
-
-    public async forceClick() {
-        await test.step('Force-click on button', async ()=>{
-            await this.locator.click({force:true});
-        })
-    }
-
+    
 }
