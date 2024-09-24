@@ -1,12 +1,13 @@
 import { Locator } from "@playwright/test";
 import { getPage, test } from "../page-fixtures/test-options";
+import { BaseElement } from "./base-element";
 
-export class DocumentElement {
-  locator: Locator;
+export class DocumentElement extends BaseElement {
+
   fileName: string;
 
   constructor(fileName: string) {
-    this.locator = getPage().getByTitle(`${fileName}.txt`);
+    super(getPage().getByTitle(`${fileName}.txt`));
     this.fileName = fileName;
   }
 
