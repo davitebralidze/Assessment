@@ -18,7 +18,7 @@ export class InboxPage {
     static async openTheMessage(messageSubject: string) {
         let isTheLastMessageVisible = false;
         let retry = 0;
-        while (!isTheLastMessageVisible && retry < 11) {
+        while (!isTheLastMessageVisible && retry < 21) {
           isTheLastMessageVisible = await this.receivedMessageLocator(messageSubject).isVisible();
           if (!isTheLastMessageVisible) {
             await this.clickOnTheRefreshButton();
