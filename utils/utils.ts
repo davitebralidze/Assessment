@@ -4,7 +4,7 @@ const { faker } = require('@faker-js/faker');
 
 export class Utils {
     static async  createFile(fileName: string): Promise<void> {
-        const randomData = faker.lorem.paragraphs(5);
+        const randomData = faker.lorem.paragraphs(200);
         await fs.writeFileSync(`${fileName}.txt`, randomData);
     }
 
