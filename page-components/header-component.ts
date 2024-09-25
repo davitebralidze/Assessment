@@ -1,4 +1,4 @@
-import { getPage } from "../page-fixtures/test-options";
+import { getPage, test } from "../page-fixtures/test-options";
 import { Locator } from "@playwright/test"
 import { ButtonElement } from "./button-element";
 
@@ -14,11 +14,15 @@ export class Header {
 
     //#region Steps
     static async clickOnMessagesButton() {
-        await this.messagesButton().click();
+        await test.step('Click on the Messages button in the header', async ()=>{
+          await this.messagesButton().click();
+        })
       }
       
       static async clickOnDocumentsButton() {
-        await this.documentsButton().click();
+        await test.step('Click on the Documents button in the header', async ()=>{
+          await this.documentsButton().click();
+        })
       }
     //#endregion
 }
