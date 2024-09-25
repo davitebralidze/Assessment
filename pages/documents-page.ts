@@ -16,7 +16,7 @@ export class DocumentsPage {
   }
 
   static async dragDesiredAttachmentToTrash(attachmentName: string) {
-    await this.document(attachmentName).dragAndDrop(this.trashButton().locator)
+    await this.document(attachmentName).dragAndDrop(this.trashButton())
   }
   //#endregion
 }

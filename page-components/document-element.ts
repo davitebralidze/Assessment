@@ -11,7 +11,7 @@ export class DocumentElement extends BaseElement {
     this.fileName = fileName;
   }
 
-  public async dragAndDrop (destinationLocator: Locator) {
+  public async dragAndDrop (destinationLocator: BaseElement) {
     await test.step(`Drag and drop a document with title ${this.fileName} to another locator`, async () => {
       await this.locator.scrollIntoViewIfNeeded();
       const box = await this.locator.boundingBox();
