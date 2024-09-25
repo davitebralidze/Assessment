@@ -9,21 +9,15 @@ export class BaseElement {
         this.locator=locator;
     }
 
-    public async click() {
+    public async click(timeout?: number) {
         await test.step ('Click on the element', async ()=>{
-            await this.locator.click();
+            await this.locator.click({timeout});
         })
     }
 
-    public async forceClick() {
+    public async forceClick(timeout?: number) {
         await test.step ('force-click on the element', async ()=>{
-            await this.locator.click({force: true});
-        })
-    }
-
-    public async forceClickWithATimeout(timeout: number) {
-        await test.step ('force-click on the element', async ()=>{
-            await this.locator.click({force: true, timeout: timeout});
+            await this.locator.click({force: true, timeout});
         })
     }
 

@@ -45,7 +45,7 @@ export class MessagesPage {
                 retry ++;
               }
             }
-            await this.receivedMessageLocator(messageSubject).forceClickWithATimeout(1000);
+            await this.receivedMessageLocator(messageSubject).forceClick(1000);
           }
         
         static async clickOnTheRefreshButton() {
@@ -133,7 +133,7 @@ export class MessagesPage {
             retry ++;
           }
         }
-        await this.receivedMessageLocator(messageSubject).forceClickWithATimeout(1000);
+        await this.receivedMessageLocator(messageSubject).forceClick(1000);
       }
     
     static async clickOnTheRefreshButton() {
