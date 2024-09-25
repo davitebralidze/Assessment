@@ -22,7 +22,7 @@ export class NewMessagesPage {
     static async uploadFileFromYourComputer(fileName: string) {
         await Utils.createFile(fileName);
         await this.attachFromComputerButtonInput().setInputFiles(`${fileName}.txt`);
-        await this.checkboxForTheUploadedFile().waitForCheckBoxToBeVisible();
+        await this.checkboxForTheUploadedFile().waitForVisibility();
         await Utils.deleteFile(fileName);
     }
     

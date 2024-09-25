@@ -8,10 +8,4 @@ export class CheckboxElement extends BaseElement {
         super(locator);
     }
     
-    public async waitForVisibility() {
-        await test.step('Wait for the cjeckbox to be visible', async ()=>{
-            await this.locator.waitFor({ state: "visible" })
-        })
-    }
-    
 }

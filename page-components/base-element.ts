@@ -45,4 +45,10 @@ export class BaseElement {
         })
     }
 
+    public async waitForVisibility() {
+        await test.step('Wait for the cjeckbox to be visible', async ()=>{
+            await this.locator.waitFor({ state: "visible" })
+        })
+    }
+
 }
