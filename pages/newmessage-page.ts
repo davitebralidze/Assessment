@@ -1,8 +1,8 @@
 import { getPage } from "../page-fixtures/test-options";
 import { Utils } from "../utils/utils.ts";
-import { ButtonElement } from "../page-components/button-element.ts"
-import { InputElement } from "../page-components/input-element.ts"
-import { CheckboxElement } from "../page-components/checkbox-element.ts";
+import { ButtonElement } from "../page-components/button-element"
+import { InputElement } from "../page-components/input-element"
+import { CheckboxElement } from "../page-components/checkbox-element";
 
 export class NewMessagesPage {
     //#region Locators

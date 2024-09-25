@@ -2,6 +2,7 @@ import { getPage } from "../page-fixtures/test-options";
 import { ButtonElement } from "../page-components/button-element";
 import { BaseElement } from "../page-components/base-element";
 
+
 export class InboxPage {
 
     //#region Locators

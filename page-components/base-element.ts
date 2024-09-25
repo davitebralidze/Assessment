@@ -40,7 +40,7 @@ export class BaseElement {
     }
 
     public async waitForTheElementToBeAttached() {
-        await test.step('Wait for the element to be in the state of Attacjed', async ()=>{
+        await test.step('Wait for the element to be in the state of Attached', async ()=>{
             await this.locator.waitFor({state:"attached"})
         })
     }
