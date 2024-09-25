@@ -21,6 +21,12 @@ export class LogInPage {
     static async clickEnterButton() {
         await this.enterButton().click();
     }
+
+    static async logIn(email: string, password: string) {
+        await this.enterEmail(email);
+        await this.enterPassword(password);
+        await this.clickEnterButton();
+    }
     //#endregion
 
 } 

@@ -15,9 +15,7 @@ const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
 
 test('test assessment', async({})=>{
     await LandingPage.clickOnLogInButton();
-    await LogInPage.enterEmail(credentials.userEmail);
-    await LogInPage.enterPassword(credentials.password);
-    await LogInPage.clickEnterButton();
+    await LogInPage.logIn(credentials.userEmail, credentials.password);
     await Header.clickOnMessagesButton();
     await MessagesPage.clickOnNewMessageButton();
     await NewMessagesPage.fillEmailReceiverInput(credentials.userEmail);
