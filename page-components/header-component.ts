@@ -1,22 +1,27 @@
 import { getPage, test } from "../page-fixtures/test-options";
+import { BaseElement } from "./base-element";
 import { ButtonElement } from "./button-element";
 
-export class Header {
+export class HeaderElement extends BaseElement {
+
+    constructor() {
+      super(getPage().locator('#toolSelector'), 'Header Element');
+    }
 
     //#region Locators
-    private static readonly messagesButton = () => new ButtonElement(getPage().locator("div .icon24-Message"));
-    private static readonly documentsButton = () => new ButtonElement(getPage().locator("div.icon24-Documents"));
+    private readonly messagesButton = () => new ButtonElement(getPage().locator("div .icon24-Message"));
+    private readonly documentsButton = () => new ButtonElement(getPage().locator("div.icon24-Documents"));
     //#endregion
 
     //#region Steps
-    static async clickOnMessagesButton() {
-        await test.step('Click on the Messages button in the header', async ()=>{
+    async navigateToMessagesPage() {
+        await test.step('Navigate to the Messages page', async ()=>{
           await this.messagesButton().click();
         })
       }
       
-      static async clickOnDocumentsButton() {
-        await test.step('Click on the Documents button in the header', async ()=>{
+      async navigateToDocumentsPage() {
+        await test.step('Navigate to the Documents page', async ()=>{
           await this.documentsButton().click();
         })
       }

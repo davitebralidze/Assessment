@@ -4,13 +4,14 @@ import { Utils } from "../utils/utils.ts";
 import { ButtonElement } from "../page-components/button-element"
 import { InputElement } from "../page-components/input-element"
 import { CheckboxElement } from "../page-components/checkbox-element";
-import { Header } from "../page-components/header-component.ts";
+import { HeaderElement } from "../page-components/header-component.ts";
 
 export class MessagesPage {
     //#region Locators
     private static readonly newMessageButton = ()=> new ButtonElement(getPage().locator(".tbBtnText", { hasText: "New" }));
     private static readonly inboxButton = ()=> new ButtonElement(getPage().locator("#treeInbox"));
     private static readonly refreshButton = ()=> new ButtonElement(getPage().getByTitle("Refresh"));
+    public static readonly headerElement = ()=> new HeaderElement();
     //#endregion
     
     //#region Steps
@@ -80,8 +81,6 @@ export class MessagesPage {
 
       static async sendEmail(reciever: string, subject: string, fileName: string) {
           await test.step(`Send the email to ${reciever} with the subject: ${subject} and the file ${fileName}`, async ()=>{
-            await Header.clickOnMessagesButton();
-            await MessagesPage.clickOnNewMessageButton();
             await this.fillEmailReceiverInput(reciever);
             await this.fillSubjectInput(subject);
             await this.clickOnAttachmentButton();

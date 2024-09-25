@@ -12,9 +12,13 @@ const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
 test('test assessment', async({})=>{
     await LandingPage.clickOnLogInButton();
     await LogInPage.logIn(credentials.userEmail, credentials.password);
+    await MessagesPage.headerElement().navigateToMessagesPage();
+    await MessagesPage.clickOnNewMessageButton();
     await MessagesPage.NewMessageForm.sendEmail(credentials.userEmail, randomTextForSubjectAndFileName, randomTextForSubjectAndFileName);
     await MessagesPage.InboxFolder.saveTheAttachmentOfTheMessageInDocuments(randomTextForSubjectAndFileName);
+    await MessagesPage.headerElement().navigateToDocumentsPage()
     await DocumentsPage.dragSavedDocumentToTrash(randomTextForSubjectAndFileName);
+    await DocumentsPage.navigateToTrashFolder();
     await DocumentsPage.TrashFolder.checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFileName);
 })
 

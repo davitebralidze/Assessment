@@ -1,7 +1,6 @@
 import { DocumentElement } from "../page-components/document-element";
 import { getPage, test } from "../page-fixtures/test-options";
 import { ButtonElement } from "../page-components/button-element";
-import { Header } from "../page-components/header-component";
 
 export class DocumentsPage {
   
@@ -12,15 +11,14 @@ export class DocumentsPage {
 
 
   //#region Steps
-  static async clickOnTrashButton() {
-    await test.step('Click on the Trash button on the Documents page', async ()=>{
+  static async navigateToTrashFolder() {
+    await test.step('Navigate to the Trash folder', async ()=>{
       await this.trashButton().click();
     })
   }
 
   static async dragSavedDocumentToTrash(attachmentName: string) {
     await test.step(`Drag the document ${attachmentName} to the trash folder`, async ()=>{
-      await Header.clickOnDocumentsButton(); //This step is not actually needed, but to make sure that we are navigated on the correct page
       await this.document(attachmentName).dragAndDrop(this.trashButton());
     })
   }
@@ -36,8 +34,6 @@ export class DocumentsPage {
       //#region Steps
       static async checkIfTheElementWasMovedToTrash(attachemntName: string) {
         await test.step(`Check whether the attachment ${attachemntName} was moved to the trash folder`, async ()=>{
-          await Header.clickOnDocumentsButton(); //This step is not actually needed, but to make sure that we are navigated on the correct page
-          await DocumentsPage.clickOnTrashButton();
           await this.document(attachemntName).expectTheDocumentToBeVisible();
         })
       }
