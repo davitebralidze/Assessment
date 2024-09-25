@@ -20,7 +20,7 @@ export class DocumentsPage {
 
   static async dragSavedDocumentToTrash(attachmentName: string) {
     await test.step(`Drag the document ${attachmentName} to the trash folder`, async ()=>{
-      await Header.clickOnDocumentsButton();
+      await Header.clickOnDocumentsButton(); //This step is not actually needed, but to make sure that we are navigated on the correct page
       await this.document(attachmentName).dragAndDrop(this.trashButton());
     })
   }
