@@ -1,5 +1,5 @@
 import { DocumentElement } from "../page-components/document-element";
-import { getPage } from "../page-fixtures/test-options";
+import { getPage, test } from "../page-fixtures/test-options";
 import { ButtonElement } from "../page-components/button-element";
 import { Header } from "../page-components/header-component";
 
@@ -13,13 +13,16 @@ export class DocumentsPage {
 
   //#region Steps
   static async clickOnTrashButton() {
-    await this.trashButton().click();
+    await test.step('Click on the Trash button on the Documents page', async ()=>{
+      await this.trashButton().click();
+    })
   }
 
   static async dragSavedDocumentToTrash(attachmentName: string) {
-    await Header.clickOnDocumentsButton();
-    await this.document(attachmentName).dragAndDrop(this.trashButton());
-
+    await test.step(`Drag the document ${attachmentName} to the trash folder`, async ()=>{
+      await Header.clickOnDocumentsButton();
+      await this.document(attachmentName).dragAndDrop(this.trashButton());
+    })
   }
   //#endregion
 
@@ -32,15 +35,19 @@ export class DocumentsPage {
   
       //#region Steps
       static async checkIfTheElementWasMovedToTrash(attachemntName: string) {
-        await Header.clickOnDocumentsButton(); //This step is not actually needed, but to make sure that we are navigated on the correct page
-        await DocumentsPage.clickOnTrashButton();
-        await this.document(attachemntName).expectTheDocumentToBeVisible();
+        await test.step(`Check whether the attachment ${attachemntName} was moved to the trash folder`, async ()=>{
+          await Header.clickOnDocumentsButton(); //This step is not actually needed, but to make sure that we are navigated on the correct page
+          await DocumentsPage.clickOnTrashButton();
+          await this.document(attachemntName).expectTheDocumentToBeVisible();
+        })
       }
   
       static async deleteAttachmentFromTrash(attachemntName: string) {
+        await test.step(`Delete the attachment ${attachemntName} from the trash folder`, async ()=>{
           await this.document(attachemntName).click();
           await this.deleteButtonForDeleteAttachmentPopup().click();
           await this.yesButtonForDeleteAttachmentPopup().click();
+        })
       }
       //#endregion
 

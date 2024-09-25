@@ -1,4 +1,4 @@
-import { getPage } from "../page-fixtures/test-options";
+import { getPage, test } from "../page-fixtures/test-options";
 import { InputElement } from "../page-components/input-element"
 import { ButtonElement } from "../page-components/button-element";
 export class LogInPage {
@@ -11,21 +11,29 @@ export class LogInPage {
 
     //#region Steps
     static async enterEmail(email: string) {
-        await this.emailInputField().fill(email);
+        await test.step(`Fill the Username / Email address field with the string: ${email}`, async ()=>{
+            await this.emailInputField().fill(email);
+        })
     }
     
     static async enterPassword(password: string) {
-        await this.passwordInputField().fill(password);
+        await test.step(`Fill the Passwprd field with the string: ${password}`, async ()=>{
+            await this.passwordInputField().fill(password);
+        })
     }
     
     static async clickEnterButton() {
-        await this.enterButton().click();
+        await test.step('Click on the Enter button on the Log in page', async ()=>{
+            await this.enterButton().click();
+        })
     }
 
     static async logIn(email: string, password: string) {
-        await this.enterEmail(email);
-        await this.enterPassword(password);
-        await this.clickEnterButton();
+        await test.step(`Log in the system with the credentials: Email - ${email} & Password - ${password}`, async ()=>{
+            await this.enterEmail(email);
+            await this.enterPassword(password);
+            await this.clickEnterButton();
+        })
     }
     //#endregion
 

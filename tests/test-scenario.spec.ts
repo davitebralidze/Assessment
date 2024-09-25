@@ -16,7 +16,6 @@ test('test assessment', async({})=>{
     await MessagesPage.InboxFolder.saveTheAttachmentOfTheMessageInDocuments(randomTextForSubjectAndFileName);
     await DocumentsPage.dragSavedDocumentToTrash(randomTextForSubjectAndFileName);
     await DocumentsPage.TrashFolder.checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFileName);
-
 })
 
 test.afterEach(async ({}, TestInfo) => {
