@@ -3,11 +3,11 @@ import { BaseElement } from './base-element';
 
 export class ButtonElement extends BaseElement{
 
-    name: string;
+    name: string = this.constructor.name;
 
     constructor (locator: Locator, name?: string) {
-        super(locator);
-        this.name=name ?? 'ButtonElement'
+        super(locator, name);
+        if (name) this.name=name;
     }
     
 }

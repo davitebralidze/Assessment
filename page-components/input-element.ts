@@ -4,11 +4,11 @@ import { BaseElement } from './base-element';
 
 export class InputElement extends BaseElement {
 
-    name: string;
+    name: string = this.constructor.name;
 
     constructor(locator: Locator, name?: string) {
-        super(locator)
-        this.name=name ?? 'InputElement';
+        super(locator, name)
+        if (name) this.name=name;
     }
 
     public async fill(text: string) {

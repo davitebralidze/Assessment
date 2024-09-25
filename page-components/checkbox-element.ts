@@ -3,11 +3,10 @@ import { Locator } from "@playwright/test"
 
 export class CheckboxElement extends BaseElement {
 
-    name: string;
+    name: string = this.constructor.name;
 
     constructor(locator: Locator, name?: string) {
-        super(locator);
-        this.name=name ?? 'Checkbox element'
+        super(locator, name);
+        if(name) this.name=name;
     }
-    
 }
