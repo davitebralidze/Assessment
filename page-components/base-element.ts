@@ -4,9 +4,11 @@ import { test } from '../page-fixtures/test-options'
 export class BaseElement {
 
     locator: Locator;
+    name: string;
 
-    constructor (locator: Locator) {
+    constructor (locator: Locator, name?: string) {
         this.locator=locator;
+        this.name = name ?? 'Baseelement'
     }
 
     public async click(timeout?: number) {

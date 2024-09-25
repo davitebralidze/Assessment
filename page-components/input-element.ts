@@ -4,8 +4,11 @@ import { BaseElement } from './base-element';
 
 export class InputElement extends BaseElement {
 
-    constructor(locator: Locator) {
+    name: string;
+
+    constructor(locator: Locator, name?: string) {
         super(locator)
+        this.name=name ?? 'InputElement';
     }
 
     public async fill(text: string) {
