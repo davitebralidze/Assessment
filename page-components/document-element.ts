@@ -1,4 +1,4 @@
-import { expect, Locator } from "@playwright/test";
+import { expect } from "@playwright/test";
 import { getPage, test } from "../page-fixtures/test-options";
 import { BaseElement } from "./base-element";
 
