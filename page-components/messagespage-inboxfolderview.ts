@@ -2,19 +2,18 @@ import { getPage, test } from "../page-fixtures/test-options";
 import { MessagesPage } from "../pages/messages-page";
 import { BaseElement } from "./base-element";
 import { ButtonElement } from "./button-element";
+import { FolderSelectionPopup } from "./messagespage-folderselectionpopup";
 
 export class InboxFolderView {
     //#region Locators
     private readonly attachmentOfTheReceivedMessage = ()=> new BaseElement(getPage().locator("a.GCSDBRWBJRB"));
     private readonly optionsDropdownButtonOfTheAttachentOfTheReceivedMessage = ()=> new ButtonElement(getPage().locator("b.icon-Arrow-down"));
     private readonly saveInDocumentsButtonOfTheDropdown = ()=> new ButtonElement(getPage().locator("span.GCSDBRWBGR", {hasText: "Save in Documents"}));
-    private readonly saveButtonOnTheFoldersPopup = ()=> new ButtonElement(getPage().locator('div[class="btn GCSDBRWBO defaultBtn"]'));
-    private readonly myDocumentsButtonInPopup = ()=> getPage().locator("div.treeItemLabel", {hasText: "My documents"});
     private readonly receivedMessageLocator = (messageSubject: string)=> new BaseElement(getPage().locator("div.listSubject").getByText(messageSubject));
+    private readonly folderSelectionPopup = ()=> new FolderSelectionPopup();
     //#endregion
 
     //#region Steps
-
     async waitForTheMessageInInbox(messageSubject: string) {
         await test.step(`Wait for the message with the subject ${messageSubject} to be shown in inbox`, async ()=> {
           let isTheLastMessageVisible = false;
@@ -41,9 +40,9 @@ export class InboxFolderView {
           await this.attachmentOfTheReceivedMessage().hover();
           await this.optionsDropdownButtonOfTheAttachentOfTheReceivedMessage().click();
           await this.saveInDocumentsButtonOfTheDropdown().forceClick();
-          await this.myDocumentsButtonInPopup().click();
-          await this.saveButtonOnTheFoldersPopup().waitForTheElementToBeAttached();
-          await this.saveButtonOnTheFoldersPopup().forceClick();
+          await this.folderSelectionPopup().clickOnMyDocuments();
+          await this.folderSelectionPopup().waitForSaveButtonToBeAttached();
+          await this.folderSelectionPopup().clickOnSaveButton();
         })
       }
     //#endregion
