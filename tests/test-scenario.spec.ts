@@ -6,6 +6,7 @@ import { LogInPage } from '../pages/login-page'
 import { MessagesPage } from '../pages/messages-page'
 import { DocumentsPage } from '../pages/documents-page'
 import { sidebarPages } from '../page-components/documentspage-sidebar'
+import { headerbarPages } from '../page-components/headerbar-component'
 const credentials = require('../credentials.json');
 const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
 //#endregion
@@ -13,11 +14,16 @@ const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
 test('test assessment', async({})=>{
     await LandingPage.clickOnLogInButton();
     await LogInPage.logIn(credentials.userEmail, credentials.password);
-    await MessagesPage.headerbar().navigateToMessagesPage();
+
+
+    await MessagesPage.headerbar().navigateTo(headerbarPages.messages)
     await MessagesPage.clickOnNewMessageButton();
     await MessagesPage.newMessageForm().sendEmail(credentials.userEmail, randomTextForSubjectAndFileName, randomTextForSubjectAndFileName);
     await MessagesPage.inboxFolder().saveTheAttachmentOfTheMessageInDocuments(randomTextForSubjectAndFileName);
-    await MessagesPage.headerbar().navigateToDocumentsPage()
+    await MessagesPage.headerbar().navigateTo(headerbarPages.documents)
+
+    
+
     await DocumentsPage.dragSavedDocumentToTrash(randomTextForSubjectAndFileName);
     await DocumentsPage.sideBar().navigateTo(sidebarPages.trash);
     await DocumentsPage.trashFolder().checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFileName);
