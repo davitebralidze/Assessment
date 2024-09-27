@@ -1,6 +1,5 @@
 import { DocumentElement } from "../page-components/document-element";
-import { getPage, test } from "../page-fixtures/test-options";
-import { ButtonElement } from "../page-components/button-element";
+import { test } from "../page-fixtures/test-options";
 import { DocumentsPageSidebar } from "../page-components/documentspage-sidebar";
 import { TrashFolder } from "../page-components/documentspage-trashfolder";
 

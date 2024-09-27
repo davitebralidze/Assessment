@@ -6,7 +6,7 @@ import { LogInPage } from '../pages/login-page'
 import { MessagesPage } from '../pages/messages-page'
 import { DocumentsPage } from '../pages/documents-page'
 import { sidebarPages } from '../page-components/documentspage-sidebar'
-import { headerbarPages } from '../page-components/headerbar-component'
+import { Headerbar, headerbarPages } from '../page-components/headerbar-component'
 const credentials = require('../credentials.json');
 const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
 //#endregion
@@ -14,19 +14,16 @@ const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
 test('test assessment', async({})=>{
     await LandingPage.clickOnLogInButton();
     await LogInPage.logIn(credentials.userEmail, credentials.password);
-
-
-    await MessagesPage.headerbar().navigateTo(headerbarPages.messages)
+    await Headerbar.navigateTo(headerbarPages.messages);
     await MessagesPage.clickOnNewMessageButton();
-    await MessagesPage.newMessageForm().sendEmail(credentials.userEmail, randomTextForSubjectAndFileName, randomTextForSubjectAndFileName);
+    await MessagesPage.sendEmail(credentials.userEmail, randomTextForSubjectAndFileName, randomTextForSubjectAndFileName);
+    await MessagesPage.inboxFolder().waitForTheMessageInInbox(randomTextForSubjectAndFileName);
+    await MessagesPage.inboxFolder().openTheMessage(randomTextForSubjectAndFileName);
     await MessagesPage.inboxFolder().saveTheAttachmentOfTheMessageInDocuments(randomTextForSubjectAndFileName);
-    await MessagesPage.headerbar().navigateTo(headerbarPages.documents)
-
-    
-
+    await Headerbar.navigateTo(headerbarPages.documents);
     await DocumentsPage.dragSavedDocumentToTrash(randomTextForSubjectAndFileName);
     await DocumentsPage.sideBar().navigateTo(sidebarPages.trash);
-    await DocumentsPage.trashFolder().checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFileName);
+    await DocumentsPage.trashFolder().checkIfTheElementIsVisible(randomTextForSubjectAndFileName);
 })
 
 test.afterEach(async ({}, TestInfo) => {

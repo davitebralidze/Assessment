@@ -2,7 +2,7 @@ import { getPage, test } from "../page-fixtures/test-options";
 import { BaseElement } from "./base-element";
 import { ButtonElement } from "./button-element";
 
-export class HeaderbarComponent extends BaseElement {
+export class Headerbar extends BaseElement {
   name: string = this.constructor.name;
 
   constructor(name?: string) {
@@ -11,24 +11,24 @@ export class HeaderbarComponent extends BaseElement {
   }
 
   //#region Locators
-  private readonly messagesButton = () => new ButtonElement(getPage().locator("div .icon24-Message"));
-  private readonly documentsButton = () => new ButtonElement(getPage().locator("div.icon24-Documents"));
+  private static readonly messagesButton = () => new ButtonElement(getPage().locator("div .icon24-Message"));
+  private static readonly documentsButton = () => new ButtonElement(getPage().locator("div.icon24-Documents"));
   //#endregion
 
   //#region Steps
-  async clickOnMessagesButton() {
+  static async clickOnMessagesButton() {
     await test.step("Click on messages button", async () => {
       await this.messagesButton().click();
     });
   }
 
-  async clickOnDocumentsButton() {
+  static async clickOnDocumentsButton() {
     await test.step("Click on documents button", async () => {
       await this.documentsButton().click();
     });
   }
 
-  async navigateTo(page: headerbarPages) {
+  static async navigateTo(page: headerbarPages) {
     switch (page) {
       case headerbarPages.messages:
         await test.step("Navigate to messages page", async () => {

@@ -48,16 +48,5 @@ export class NewMessageForm {
           await this.sendButton().click();
         })
     }
-
-
-    async sendEmail(reciever: string, subject: string, fileName: string) {
-        await test.step(`Send the email to ${reciever} with the subject: ${subject} and the file ${fileName}`, async ()=>{
-          await this.fillEmailReceiverInput(reciever);
-          await this.fillSubjectInput(subject);
-          await this.clickOnAttachmentButton();
-          await this.uploadFileFromYourComputer(fileName);
-          await this.clickOnSendButton();
-        })
-    }
     //#endregion
 }

@@ -14,8 +14,9 @@ export class InboxFolder {
     //#endregion
 
     //#region Steps
-    async openTheMessage(messageSubject: string) {
-        await test.step(`Open the message from the inbox with the subject ${messageSubject}`, async ()=>{
+
+    async waitForTheMessageInInbox(messageSubject: string) {
+        await test.step(`Wait for the message with the subject ${messageSubject} to be shown in inbox`, async ()=> {
           let isTheLastMessageVisible = false;
           let retry = 0;
           while (!isTheLastMessageVisible && retry < 21) {
@@ -26,13 +27,17 @@ export class InboxFolder {
               retry ++;
             }
           }
+        })
+    }
+
+    async openTheMessage(messageSubject: string) {
+        await test.step(`Open the message from the inbox with the subject ${messageSubject}`, async ()=>{
           await this.receivedMessageLocator(messageSubject).forceClick(1000);
         })
       }
     
     async saveTheAttachmentOfTheMessageInDocuments(attachemntName: string) {
         await test.step(`Save the attachment of the opened message in the Documents folder`, async ()=>{
-          await this.openTheMessage(attachemntName);
           await this.attachmentOfTheReceivedMessage().hover();
           await this.optionsDropdownButtonOfTheAttachentOfTheReceivedMessage().click();
           await this.saveInDocumentsButtonOfTheDropdown().forceClick();

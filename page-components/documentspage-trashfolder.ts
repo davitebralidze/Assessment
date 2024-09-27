@@ -10,7 +10,7 @@ export class TrashFolder {
   //#endregion
 
   //#region Steps
-  async checkIfTheElementWasMovedToTrash(attachemntName: string) {
+  async checkIfTheElementIsVisible(attachemntName: string) {
     await test.step(`Check whether the attachment ${attachemntName} was moved to the trash folder`, async () => {
       await this.document(attachemntName).expectTheDocumentToBeVisible();
     });
