@@ -7,7 +7,7 @@ import { MessagesPage } from '../pages/messages-page'
 import { DocumentsPage } from '../pages/documents-page'
 import { sidebarPages } from '../page-components/documentspage-sidebar'
 import { Headerbar, headerbarPages } from '../page-components/headerbar-component'
-const credentials = require('../credentials.json');
+const credentials = require('../credentials.json')
 const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
 //#endregion
 
