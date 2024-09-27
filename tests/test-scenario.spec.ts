@@ -5,6 +5,7 @@ import { LandingPage } from '../pages/landing-page'
 import { LogInPage } from '../pages/login-page'
 import { MessagesPage } from '../pages/messages-page'
 import { DocumentsPage } from '../pages/documents-page'
+import { sidebarPages } from '../page-components/documentspage-sidebar'
 const credentials = require('../credentials.json');
 const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
 //#endregion
@@ -18,13 +19,13 @@ test('test assessment', async({})=>{
     await MessagesPage.inboxFolder().saveTheAttachmentOfTheMessageInDocuments(randomTextForSubjectAndFileName);
     await MessagesPage.headerbar().navigateToDocumentsPage()
     await DocumentsPage.dragSavedDocumentToTrash(randomTextForSubjectAndFileName);
-    await DocumentsPage.navigateToTrashFolder();
-    await DocumentsPage.TrashFolder.checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFileName);
+    await DocumentsPage.sideBar().navigateTo(sidebarPages.trash);
+    await DocumentsPage.trashFolder().checkIfTheElementWasMovedToTrash(randomTextForSubjectAndFileName);
 })
 
 test.afterEach(async ({}, TestInfo) => {
     if(TestInfo.status==='passed') {
-        await DocumentsPage.TrashFolder.deleteAttachmentFromTrash(randomTextForSubjectAndFileName);
+        await DocumentsPage.trashFolder().deleteAttachmentFromTrash(randomTextForSubjectAndFileName);
     } else {
         return;
     }

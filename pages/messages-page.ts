@@ -2,8 +2,8 @@ import { getPage, test } from "../page-fixtures/test-options";
 import { ButtonElement } from "../page-components/button-element";
 import { HeaderbarComponent } from "../page-components/headerbar-component.ts";
 import { NewMessageForm } from "../page-components/messagespage-newmessage-form.ts";
-import { InboxFolder } from "../page-components/messagespage-inbox-components.ts";
-import { MessagesSidebarComponent } from "../page-components/messagespagesidebar-component.ts";
+import { InboxFolder } from "../page-components/messagespage-inboxfolder.ts";
+import { MessagesSidebarComponent } from "../page-components/messagespage-sidebar-component.ts";
 
 export class MessagesPage {
     //#region Locators
