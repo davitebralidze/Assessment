@@ -2,7 +2,7 @@ import { getPage, test } from "../page-fixtures/test-options";
 import { BaseElement } from "./base-element";
 import { ButtonElement } from "./button-element";
 
-export class HeaderElement extends BaseElement {
+export class HeaderbarComponent extends BaseElement {
 
     constructor() {
       super(getPage().locator('#toolSelector'), 'Header Element');
