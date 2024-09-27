@@ -19,13 +19,12 @@ export class MessagesPage {
           await this.newMessageButton().click();
         })
     }
-
+    
     static async clickOnTheRefreshButton() {
         await test.step('Click on the refresh button on the Messages page', async ()=>{
           await this.refreshButton().click();
         })
     }
-
     
     static async sendEmail(reciever: string, subject: string, fileName: string) {
         await test.step(`Send the email to ${reciever} with the subject: ${subject} and the file ${fileName}`, async ()=>{
