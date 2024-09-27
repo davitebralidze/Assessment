@@ -4,8 +4,11 @@ import { ButtonElement } from "./button-element";
 
 export class HeaderbarComponent extends BaseElement {
 
-    constructor() {
+    name: string = this.constructor.name;
+
+    constructor(name?: string) {
       super(getPage().locator('#toolSelector'), 'Header Element');
+      if(name) this.name=name;
     }
 
     //#region Locators
