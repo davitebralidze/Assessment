@@ -1,7 +1,7 @@
 import { getPage, test } from "../page-fixtures/test-options";
 import { ButtonElement } from "../page-components/button-element";
 import { NewMessageForm } from "../page-components/messagespage-newmessage-form.ts";
-import { InboxFolder } from "../page-components/messagespage-inboxfolder.ts";
+import { InboxFolderView } from "../page-components/messagespage-inboxfolderview.ts";
 import { MessagesSidebarComponent } from "../page-components/messagespage-sidebar-component.ts";
 
 export class MessagesPage {
@@ -9,7 +9,7 @@ export class MessagesPage {
     private static readonly newMessageButton = ()=> new ButtonElement(getPage().locator(".tbBtnText", { hasText: "New" }));
     private static readonly refreshButton = ()=> new ButtonElement(getPage().getByTitle("Refresh"));
     public static readonly newMessageForm = ()=> new NewMessageForm();
-    public static readonly inboxFolder = ()=> new InboxFolder();
+    public static readonly inboxFolder = ()=> new InboxFolderView();
     public static readonly sideBar = ()=> new MessagesSidebarComponent();
     //#endregion
     

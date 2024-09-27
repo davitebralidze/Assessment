@@ -3,7 +3,7 @@ import { MessagesPage } from "../pages/messages-page";
 import { BaseElement } from "./base-element";
 import { ButtonElement } from "./button-element";
 
-export class InboxFolder {
+export class InboxFolderView {
     //#region Locators
     private readonly attachmentOfTheReceivedMessage = ()=> new BaseElement(getPage().locator("a.GCSDBRWBJRB"));
     private readonly optionsDropdownButtonOfTheAttachentOfTheReceivedMessage = ()=> new ButtonElement(getPage().locator("b.icon-Arrow-down"));

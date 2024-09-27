@@ -2,7 +2,7 @@ import { getPage, test } from "../page-fixtures/test-options";
 import { ButtonElement } from "./button-element";
 import { DocumentElement } from "./document-element";
 
-export class TrashFolder {
+export class TrashFolderView {
   //#region Locators
   private readonly document = (attachmentName) => new DocumentElement(attachmentName);
   private readonly deleteButtonForDeleteAttachmentPopup = () => new ButtonElement(getPage().getByTitle("Delete"));

@@ -1,14 +1,14 @@
 import { DocumentElement } from "../page-components/document-element";
 import { test } from "../page-fixtures/test-options";
 import { DocumentsPageSidebar } from "../page-components/documentspage-sidebar";
-import { TrashFolder } from "../page-components/documentspage-trashfolder";
+import { TrashFolderView } from "../page-components/documentspage-trashfolderview";
 
 export class DocumentsPage {
   
   //#region Locators
   public static readonly document = (attachmentName) => new DocumentElement(attachmentName);
   public static readonly sideBar = () => new DocumentsPageSidebar();
-  public static readonly trashFolder = () => new TrashFolder();
+  public static readonly trashFolder = () => new TrashFolderView();
 
   //#endregion
 
