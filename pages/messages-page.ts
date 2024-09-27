@@ -1,9 +1,9 @@
 import { getPage, test } from "../page-fixtures/test-options";
-import { ButtonElement } from "../page-components/button-element"
+import { ButtonElement } from "../page-components/button-element";
 import { HeaderbarComponent } from "../page-components/headerbar-component.ts";
-import { NewMessageForm } from "../page-components/messages-newmessage-form.ts";
-import { InboxFolder } from "../page-components/messages-inbox-components.ts";
-import { MessagesSidebarComponent } from "../page-components/messages-sidebar-component.ts";
+import { NewMessageForm } from "../page-components/messagespage-newmessage-form.ts";
+import { InboxFolder } from "../page-components/messagespage-inbox-components.ts";
+import { MessagesSidebarComponent } from "../page-components/messagespagesidebar-component.ts";
 
 export class MessagesPage {
     //#region Locators

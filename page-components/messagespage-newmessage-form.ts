@@ -1,7 +1,7 @@
 import { getPage, test } from "../page-fixtures/test-options";
 import { ButtonElement } from "./button-element";
 import { InputElement } from "./input-element";
-import { CheckboxElement } from "../page-components/checkbox-element";
+import { CheckboxElement } from "./checkbox-element";
 import { Utils } from "../utils/utils";
 
 
