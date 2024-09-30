@@ -37,17 +37,5 @@ export class MessagesPage {
           await this.newMessageForm().clickOnSendButton();
         })
     }
-
-    static async navigateToMessages() {
-      await test.step('Navigate to Messages Page', async ()=>{
-        await this.headerBar().clickOnMessagesButton();
-      })
-    }
-
-    static async navigateToDocuments() {
-      await test.step('Navigate to Documents Page', async ()=>{
-        await this.headerBar().clickOnDocumentsButton();
-      })
-    }
     //#endregion
 }
