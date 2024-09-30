@@ -11,24 +11,24 @@ export class Headerbar extends BaseElement {
   }
 
   //#region Locators
-  private static readonly messagesButton = () => new ButtonElement(getPage().locator("div .icon24-Message"));
-  private static readonly documentsButton = () => new ButtonElement(getPage().locator("div.icon24-Documents"));
+  private readonly messagesButton = () => new ButtonElement(getPage().locator("div .icon24-Message"));
+  private readonly documentsButton = () => new ButtonElement(getPage().locator("div.icon24-Documents"));
   //#endregion
 
   //#region Steps
-  static async clickOnMessagesButton() {
+  async clickOnMessagesButton() {
     await test.step("Click on messages button", async () => {
       await this.messagesButton().click();
     });
   }
 
-  static async clickOnDocumentsButton() {
+  async clickOnDocumentsButton() {
     await test.step("Click on documents button", async () => {
       await this.documentsButton().click();
     });
   }
 
-  static async navigateTo(page: headerbarPages) {
+  async navigateTo(page: headerbarPages) {
     switch (page) {
       case headerbarPages.messages:
         await test.step("Navigate to messages page", async () => {

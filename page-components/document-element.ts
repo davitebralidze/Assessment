@@ -31,6 +31,5 @@ export class DocumentElement extends BaseElement {
     await test.step('Check whether the element is visible or not', async ()=>{
       await expect(this.locator).toBeVisible();
     })
-}
-
+  }
 }

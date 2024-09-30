@@ -3,6 +3,7 @@ import { ButtonElement } from "../page-components/button-element";
 import { NewMessageForm } from "../page-components/messagespage-newmessage-form.ts";
 import { InboxFolderView } from "../page-components/messagespage-inboxfolderview.ts";
 import { MessagesSidebarComponent } from "../page-components/messagespage-sidebar-component.ts";
+import { Headerbar } from "../page-components/headerbar-component.ts";
 
 export class MessagesPage {
     //#region Locators
@@ -11,6 +12,7 @@ export class MessagesPage {
     public static readonly newMessageForm = ()=> new NewMessageForm();
     public static readonly inboxFolder = ()=> new InboxFolderView();
     public static readonly sideBar = ()=> new MessagesSidebarComponent();
+    public static readonly headerBar = ()=> new Headerbar();
     //#endregion
     
     //#region Steps
@@ -34,6 +36,18 @@ export class MessagesPage {
           await this.newMessageForm().uploadFileFromYourComputer(fileName);
           await this.newMessageForm().clickOnSendButton();
         })
+    }
+
+    static async navigateToMessages() {
+      await test.step('Navigate to Messages Page', async ()=>{
+        await this.headerBar().clickOnMessagesButton();
+      })
+    }
+
+    static async navigateToDocuments() {
+      await test.step('Navigate to Documents Page', async ()=>{
+        await this.headerBar().clickOnDocumentsButton();
+      })
     }
     //#endregion
 }

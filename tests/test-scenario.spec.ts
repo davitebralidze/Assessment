@@ -7,6 +7,7 @@ import { MessagesPage } from '../pages/messages-page'
 import { DocumentsPage } from '../pages/documents-page'
 import { sidebarPages } from '../page-components/documentspage-sidebar'
 import { Headerbar, headerbarPages } from '../page-components/headerbar-component'
+import { NewMessageForm } from '../page-components/messagespage-newmessage-form'
 const credentials = require('../credentials.json')
 const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
 //#endregion
@@ -14,13 +15,13 @@ const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
 test('test assessment', async({})=>{
     await LandingPage.clickOnLogInButton();
     await LogInPage.logIn(credentials.userEmail, credentials.password);
-    await Headerbar.navigateTo(headerbarPages.messages);
+    await MessagesPage.headerBar().navigateTo(headerbarPages.messages);
     await MessagesPage.clickOnNewMessageButton();
     await MessagesPage.sendEmail(credentials.userEmail, randomTextForSubjectAndFileName, randomTextForSubjectAndFileName);
     await MessagesPage.inboxFolder().waitForTheMessageInInbox(randomTextForSubjectAndFileName);
     await MessagesPage.inboxFolder().openTheMessage(randomTextForSubjectAndFileName);
     await MessagesPage.inboxFolder().saveTheAttachmentOfTheMessageInDocuments(randomTextForSubjectAndFileName);
-    await Headerbar.navigateTo(headerbarPages.documents);
+    await MessagesPage.headerBar().navigateTo(headerbarPages.documents);
     await DocumentsPage.dragSavedDocumentToTrash(randomTextForSubjectAndFileName);
     await DocumentsPage.sideBar().navigateTo(sidebarPages.trash);
     await DocumentsPage.trashFolder().checkIfTheElementIsVisible(randomTextForSubjectAndFileName);
