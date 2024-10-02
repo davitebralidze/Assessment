@@ -27,9 +27,9 @@ export class Utils {
         await fs.unlinkSync(filePath);
     }
 
-    static async deleteFolder(folderName: string): Promise<void> {
-        if(fs.existsSync(path.join(folderName))) {
-            fs.rmSync(path.join(folderName), { recursive: true, force: true });
+    static async deleteFolder(folderPath: string): Promise<void> {
+        if(fs.existsSync(folderPath)) {
+            fs.rmSync((folderPath), { recursive: true, force: true });
         }
     }
 }
