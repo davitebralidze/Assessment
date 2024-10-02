@@ -14,7 +14,7 @@ let file;
 //#endregion
 
 test.beforeEach(async({})=>{
-    file = await Utils.createFile(faker.string.alphanumeric({length: 10}), 'pdf');
+    file = await Utils.createTestFile(faker.string.alphanumeric({length: 10}), 'pdf');
 })
 
 test('test assessment', async({})=>{

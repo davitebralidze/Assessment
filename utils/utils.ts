@@ -4,7 +4,11 @@ import PDFDocument from 'pdfkit';
 const { faker } = require('@faker-js/faker');
 
 export class Utils {
-    static async  createFile(fileName: string, fileFormat: string): Promise<{ filePath: string, fileFormat: string, fileName: string }> {
+
+    static async  createTestFile(fileName: string, fileFormat: string): Promise<{ filePath: string, fileFormat: string, fileName: string }> {  
+        if (!fs.existsSync('./test-files')) {
+            fs.mkdirSync('./test-files');
+        }
         const randomData = faker.lorem.paragraphs(200);
         const filePath = `./test-files/${fileName}.${fileFormat}`
         if(fileFormat == 'pdf') {
