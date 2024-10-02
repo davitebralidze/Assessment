@@ -3,7 +3,7 @@ import { ButtonElement } from "../page-components/button-element";
 import { NewMessageForm } from "../page-components/messagespage-newmessage-form";
 import { InboxFolderView } from "../page-components/messagespage-inboxfolderview";
 import { MessagesSidebarComponent } from "../page-components/messagespage-sidebar-component";
-import { Headerbar } from "../page-components/headerbar-component";
+import { HeaderBar, headerBarPages } from "../page-components/headerbar-component";
 
 export class MessagesPage {
     //#region Locators
@@ -12,7 +12,7 @@ export class MessagesPage {
     public static readonly newMessageForm = ()=> new NewMessageForm();
     public static readonly inboxFolder = ()=> new InboxFolderView();
     public static readonly sideBar = ()=> new MessagesSidebarComponent();
-    public static readonly headerBar = ()=> new Headerbar();
+    public static readonly headerBar = ()=> new HeaderBar();
     //#endregion
     
     //#region Steps
@@ -36,6 +36,21 @@ export class MessagesPage {
           await this.newMessageForm().uploadFileFromYourComputer(fileName);
           await this.newMessageForm().clickOnSendButton();
         })
+    }
+
+    static async navigateTo(page: headerBarPages) {
+      switch (page) {
+        case headerBarPages.messages:
+          await test.step("Navigate to messages page", async () => {
+            await MessagesPage.headerBar().clickOnMessagesButton();
+          });
+          break;
+        case headerBarPages.documents:
+          await test.step("Navigate to documents page", async () => {
+            await MessagesPage.headerBar().clickOnDocumentsButton();
+          });
+          break;
+      }
     }
     //#endregion
 }

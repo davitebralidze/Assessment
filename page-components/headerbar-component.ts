@@ -2,7 +2,7 @@ import { getPage, test } from "../page-fixtures/test-options";
 import { BaseElement } from "./base-element";
 import { ButtonElement } from "./button-element";
 
-export class Headerbar extends BaseElement {
+export class HeaderBar extends BaseElement {
   name: string = this.constructor.name;
 
   constructor(name?: string) {
@@ -27,25 +27,10 @@ export class Headerbar extends BaseElement {
       await this.documentsButton().click();
     });
   }
-
-  async navigateTo(page: headerbarPages) {
-    switch (page) {
-      case headerbarPages.messages:
-        await test.step("Navigate to messages page", async () => {
-          await this.clickOnMessagesButton();
-        });
-        break;
-      case headerbarPages.documents:
-        await test.step("Navigate to documents page", async () => {
-          await this.clickOnDocumentsButton();
-        });
-        break;
-    }
-    //#endregion
-  }
+      //#endregion
 }
 
-export enum headerbarPages {
+export enum headerBarPages {
   messages,
   documents,
 }
