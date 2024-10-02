@@ -7,7 +7,6 @@ export class Utils {
     static async  createFile(fileName: string, fileFormat: string): Promise<{ filePath: string, fileFormat: string, fileName: string }> {
         const randomData = faker.lorem.paragraphs(200);
         const filePath = `./test-files/${fileName}.${fileFormat}`
-        const fileNameWithFormat = `${fileName}.${fileFormat}`
         if(fileFormat == 'pdf') {
             const doc = new PDFDocument();
             const stream = fs.createWriteStream(filePath);
