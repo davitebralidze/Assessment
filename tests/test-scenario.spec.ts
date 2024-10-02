@@ -8,7 +8,8 @@ import { DocumentsPage } from '../pages/documents-page'
 import { sidebarPages } from '../page-components/documentspage-sidebar'
 import { headerbarPages } from '../page-components/headerbar-component'
 const credentials = require('../credentials.json')
-const randomTextForSubjectAndFileName = faker.string.alphanumeric({length: 10});
+const subject = faker.string.alphanumeric({length: 10});
+const fileName = faker.string.alphanumeric({length: 10});
 //#endregion
 
 test('test assessment', async({})=>{
@@ -16,19 +17,19 @@ test('test assessment', async({})=>{
     await LogInPage.logIn(credentials.userEmail, credentials.password);
     await MessagesPage.headerBar().navigateTo(headerbarPages.messages);
     await MessagesPage.clickOnNewMessageButton();
-    await MessagesPage.sendEmail(credentials.userEmail, randomTextForSubjectAndFileName, randomTextForSubjectAndFileName);
-    await MessagesPage.inboxFolder().waitForTheMessageInInbox(randomTextForSubjectAndFileName);
-    await MessagesPage.inboxFolder().openTheMessage(randomTextForSubjectAndFileName);
-    await MessagesPage.inboxFolder().saveTheAttachmentOfTheMessageInDocuments(randomTextForSubjectAndFileName);
+    await MessagesPage.sendEmail(credentials.userEmail, subject, fileName);
+    await MessagesPage.inboxFolder().waitForTheMessageInInbox(subject);
+    await MessagesPage.inboxFolder().openTheMessage(subject);
+    await MessagesPage.inboxFolder().saveTheAttachmentOfTheMessageInDocuments(fileName);
     await MessagesPage.headerBar().navigateTo(headerbarPages.documents);
-    await DocumentsPage.dragSavedDocumentToTrash(randomTextForSubjectAndFileName);
+    await DocumentsPage.dragSavedDocumentToTrash(fileName);
     await DocumentsPage.sideBar().navigateTo(sidebarPages.trash);
-    await DocumentsPage.trashFolder().checkIfTheElementIsVisible(randomTextForSubjectAndFileName);
+    await DocumentsPage.trashFolder().checkIfTheElementIsVisible(fileName);
 })
 
 test.afterEach(async ({}, TestInfo) => {
     if(TestInfo.status==='passed') {
-        await DocumentsPage.trashFolder().deleteAttachmentFromTrash(randomTextForSubjectAndFileName);
+        await DocumentsPage.trashFolder().deleteAttachmentFromTrash(fileName);
     } else {
         return;
     }
