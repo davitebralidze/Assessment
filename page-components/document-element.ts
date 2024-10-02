@@ -5,14 +5,16 @@ import { BaseElement } from "./base-element";
 export class DocumentElement extends BaseElement {
 
   fileName: string;
+  fileFormat: string
 
-  constructor(fileName: string) {
-    super(getPage().getByTitle(`${fileName}.txt`));
+  constructor(fileName: string, fileFormat: string) {
+    super(getPage().getByTitle(`${fileName}.${fileFormat}`));
     this.fileName = fileName;
+    this.fileFormat = fileFormat;
   }
 
   public async dragAndDrop (destinationLocator: BaseElement) {
-    await test.step(`Drag and drop a document with title ${this.fileName} to another locator`, async () => {
+    await test.step(`Drag and drop a document to another locator`, async () => {
       await this.locator.scrollIntoViewIfNeeded();
       const box = await this.locator.boundingBox();
       const x = box?.x;

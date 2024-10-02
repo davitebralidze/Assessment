@@ -10,11 +10,11 @@ import { headerBarPages } from '../page-components/headerbar-component'
 import { Utils } from '../utils/utils'
 const credentials = require('../credentials.json')
 const subject = faker.string.alphanumeric({length: 10});
-const fileName = faker.string.alphanumeric({length: 10});
+let file;
 //#endregion
 
 test.beforeEach(async({})=>{
-    await Utils.createFile(fileName);
+    file = await Utils.createFile(faker.string.alphanumeric({length: 10}), 'pdf');
 })
 
 test('test assessment', async({})=>{
@@ -22,20 +22,20 @@ test('test assessment', async({})=>{
     await LogInPage.logIn(credentials.userEmail, credentials.password);
     await MessagesPage.navigateTo(headerBarPages.messages);
     await MessagesPage.clickOnNewMessageButton();
-    await MessagesPage.sendEmail(credentials.userEmail, subject, fileName);
+    await MessagesPage.sendEmail(credentials.userEmail, subject, file.filePath);
     await MessagesPage.inboxFolder().waitForTheMessageInInbox(subject);
     await MessagesPage.inboxFolder().openTheMessage(subject);
-    await MessagesPage.inboxFolder().saveTheAttachmentOfTheMessageInDocuments(fileName);
+    await MessagesPage.inboxFolder().saveTheAttachmentOfTheMessageInDocuments(file.fileName);
     await MessagesPage.navigateTo(headerBarPages.documents);
-    await DocumentsPage.dragSavedDocumentToTrash(fileName);
+    await DocumentsPage.dragSavedDocumentToTrash(file.fileName, file.fileFormat);
     await DocumentsPage.sideBar().navigateTo(sidebarPages.trash);
-    await DocumentsPage.trashFolder().checkIfTheDocumentIsVisibleWithName(fileName);
+    await DocumentsPage.trashFolder().checkIfTheDocumentIsVisibleWithName(file.fileName, file.fileFormat);
 })
 
 test.afterEach(async ({}, TestInfo) => {
-    await Utils.deleteFile(fileName);
+    await Utils.deleteFile(file.filePath);
     if(TestInfo.status==='passed') {
-        await DocumentsPage.trashFolder().deleteAttachmentFromTrash(fileName);
+        await DocumentsPage.trashFolder().deleteAttachmentFromTrash(file.fileName, file.fileFormat);
     } else {
         return;
     }

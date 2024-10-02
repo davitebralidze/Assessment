@@ -22,9 +22,9 @@ export class NewMessageForm {
         })
     }
     
-    async uploadFileFromYourComputer(fileName: string) {
-      await test.step(`Upload the attachment ${fileName} from the computer`, async ()=>{
-        await this.attachFromComputerButtonInput().setInputFiles(`${fileName}.txt`);
+    async uploadFileFromYourComputer(filePath: string) {
+      await test.step(`Upload the attachment from the computer`, async ()=>{
+        await this.attachFromComputerButtonInput().setInputFiles(filePath);
         await this.checkboxForTheUploadedFile().waitForVisibility();
       })
     }

@@ -13,7 +13,7 @@ export default defineConfig({
   projects: [
     {
       name: "chromium",
-      testMatch: "test-scenario.spec.ts",
+      testMatch: ["test-scenario.spec.ts"],
       use: { browserName: 'chromium', baseURL: "https://mailfence.com/", viewport: {width: 1280, height: 720} },
     },
 

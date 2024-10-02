@@ -5,22 +5,22 @@ import { DeletePopup } from "./documentspage-deletepopup";
 
 export class TrashFolderView {
   //#region Locators
-  private readonly document = (attachmentName) => new DocumentElement(attachmentName);
+  private readonly document = (fileName, fileFormat) => new DocumentElement(fileName, fileFormat);
   private readonly deleteButton = ()=> new ButtonElement(getPage().getByTitle("Delete"));
   private readonly deletePopup = ()=> new DeletePopup();
 
   //#endregion
 
   //#region Steps
-  async checkIfTheDocumentIsVisibleWithName(attachemntName: string) {
-    await test.step(`Check whether the attachment ${attachemntName} was moved to the trash folder`, async () => {
-      await this.document(attachemntName).expectTheDocumentToBeVisible();
+  async checkIfTheDocumentIsVisibleWithName(fileName: string, fileFormat: string) {
+    await test.step(`Check whether the attachment was moved to the trash folder`, async () => {
+      await this.document(fileName, fileFormat).expectTheDocumentToBeVisible();
     });
   }
 
-  async deleteAttachmentFromTrash(attachmentName: string) {
-    await test.step(`Delete the attachment ${attachmentName} from the trash folder`, async () => {
-      await this.document(attachmentName).click();
+  async deleteAttachmentFromTrash(fileName: string, fileFormat: string) {
+    await test.step(`Delete the attachment from the trash folder`, async () => {
+      await this.document(fileName, fileFormat).click();
       await this.deleteButton().click();
       await this.deletePopup().clickOnYesButton();
     });

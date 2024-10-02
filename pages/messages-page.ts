@@ -28,12 +28,12 @@ export class MessagesPage {
         })
     }
     
-    static async sendEmail(receiver: string, subject: string, fileName: string) {
-        await test.step(`Send the email to ${receiver} with the subject: ${subject} and the file ${fileName}`, async ()=>{
+    static async sendEmail(receiver: string, subject: string, filePath: string) {
+        await test.step(`Send the email to ${receiver} with the subject: ${subject} and the file`, async ()=>{
           await this.newMessageForm().fillEmailReceiverInput(receiver);
           await this.newMessageForm().fillSubjectInput(subject);
           await this.newMessageForm().clickOnAttachmentButton();
-          await this.newMessageForm().uploadFileFromYourComputer(fileName);
+          await this.newMessageForm().uploadFileFromYourComputer(filePath);
           await this.newMessageForm().clickOnSendButton();
         })
     }
