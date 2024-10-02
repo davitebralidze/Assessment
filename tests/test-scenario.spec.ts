@@ -7,10 +7,15 @@ import { MessagesPage } from '../pages/messages-page'
 import { DocumentsPage } from '../pages/documents-page'
 import { sidebarPages } from '../page-components/documentspage-sidebar'
 import { headerBarPages } from '../page-components/headerbar-component'
+import { Utils } from '../utils/utils'
 const credentials = require('../credentials.json')
 const subject = faker.string.alphanumeric({length: 10});
 const fileName = faker.string.alphanumeric({length: 10});
 //#endregion
+
+test.beforeEach(async({})=>{
+    await Utils.createFile(fileName);
+})
 
 test('test assessment', async({})=>{
     await LandingPage.clickOnLogInButton();
@@ -28,6 +33,7 @@ test('test assessment', async({})=>{
 })
 
 test.afterEach(async ({}, TestInfo) => {
+    await Utils.deleteFile(fileName);
     if(TestInfo.status==='passed') {
         await DocumentsPage.trashFolder().deleteAttachmentFromTrash(fileName);
     } else {

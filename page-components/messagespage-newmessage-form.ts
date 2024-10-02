@@ -24,10 +24,8 @@ export class NewMessageForm {
     
     async uploadFileFromYourComputer(fileName: string) {
       await test.step(`Upload the attachment ${fileName} from the computer`, async ()=>{
-        await Utils.createFile(fileName);
         await this.attachFromComputerButtonInput().setInputFiles(`${fileName}.txt`);
         await this.checkboxForTheUploadedFile().waitForVisibility();
-        await Utils.deleteFile(fileName);
       })
     }
     
