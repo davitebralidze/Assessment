@@ -28,9 +28,9 @@ export class MessagesPage {
         })
     }
     
-    static async sendEmail(reciever: string, subject: string, fileName: string) {
-        await test.step(`Send the email to ${reciever} with the subject: ${subject} and the file ${fileName}`, async ()=>{
-          await this.newMessageForm().fillEmailReceiverInput(reciever);
+    static async sendEmail(receiver: string, subject: string, fileName: string) {
+        await test.step(`Send the email to ${receiver} with the subject: ${subject} and the file ${fileName}`, async ()=>{
+          await this.newMessageForm().fillEmailReceiverInput(receiver);
           await this.newMessageForm().fillSubjectInput(subject);
           await this.newMessageForm().clickOnAttachmentButton();
           await this.newMessageForm().uploadFileFromYourComputer(fileName);

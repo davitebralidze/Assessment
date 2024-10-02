@@ -32,7 +32,7 @@ export class NewMessageForm {
     }
     
     async fillEmailReceiverInput(sendTo: string) {
-        await test.step(`Fill the Reciever input with the string: ${sendTo}`, async ()=>{
+        await test.step(`Fill the Receiver input with the string: ${sendTo}`, async ()=>{
           await this.emailReceiverInput().fill(sendTo);
         })
     }

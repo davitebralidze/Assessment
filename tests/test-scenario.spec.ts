@@ -24,7 +24,7 @@ test('test assessment', async({})=>{
     await MessagesPage.headerBar().navigateTo(headerbarPages.documents);
     await DocumentsPage.dragSavedDocumentToTrash(fileName);
     await DocumentsPage.sideBar().navigateTo(sidebarPages.trash);
-    await DocumentsPage.trashFolder().checkIfTheElementIsVisible(fileName);
+    await DocumentsPage.trashFolder().checkIfTheDocumentIsVisibleWithName(fileName);
 })
 
 test.afterEach(async ({}, TestInfo) => {

@@ -12,15 +12,15 @@ export class TrashFolderView {
   //#endregion
 
   //#region Steps
-  async checkIfTheElementIsVisible(attachemntName: string) {
+  async checkIfTheDocumentIsVisibleWithName(attachemntName: string) {
     await test.step(`Check whether the attachment ${attachemntName} was moved to the trash folder`, async () => {
       await this.document(attachemntName).expectTheDocumentToBeVisible();
     });
   }
 
-  async deleteAttachmentFromTrash(attachemntName: string) {
-    await test.step(`Delete the attachment ${attachemntName} from the trash folder`, async () => {
-      await this.document(attachemntName).click();
+  async deleteAttachmentFromTrash(attachmentName: string) {
+    await test.step(`Delete the attachment ${attachmentName} from the trash folder`, async () => {
+      await this.document(attachmentName).click();
       await this.deleteButton().click();
       await this.deletePopup().clickOnYesButton();
     });
