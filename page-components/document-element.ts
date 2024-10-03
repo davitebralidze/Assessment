@@ -5,12 +5,10 @@ import { BaseElement } from "./base-element";
 export class DocumentElement extends BaseElement {
 
   fileName: string;
-  fileFormat: string
 
-  constructor(fileName: string, fileFormat: string) {
-    super(getPage().getByTitle(`${fileName}.${fileFormat}`));
+  constructor(fileName: string) {
+    super(getPage().locator('div.GCSDBRWBPJB', {hasText: fileName}))
     this.fileName = fileName;
-    this.fileFormat = fileFormat;
   }
 
   public async dragAndDrop (destinationLocator: BaseElement) {

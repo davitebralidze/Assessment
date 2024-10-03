@@ -6,7 +6,7 @@ import { TrashFolderView } from "../page-components/documentspage-trashfoldervie
 export class DocumentsPage {
   
   //#region Locators
-  public static readonly document = (fileName, fileFormat) => new DocumentElement(fileName, fileFormat);
+  public static readonly document = (fileName) => new DocumentElement(fileName);
   public static readonly sideBar = () => new DocumentsPageSidebar();
   public static readonly trashFolder = () => new TrashFolderView();
 
@@ -14,9 +14,9 @@ export class DocumentsPage {
 
 
   //#region Steps
-  static async dragSavedDocumentToTrash(fileName: string, fileFormat: string) {
+  static async dragSavedDocumentToTrash(fileName: string) {
     await test.step(`Drag the document to the trash folder`, async ()=>{
-      await this.document(fileName, fileFormat).dragAndDrop(this.sideBar().trashButton());
+      await this.document(fileName).dragAndDrop(this.sideBar().trashButton());
     })
   }
   //#endregion

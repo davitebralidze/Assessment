@@ -27,15 +27,15 @@ test('test assessment', async({})=>{
     await MessagesPage.inboxFolder().openTheMessage(subject);
     await MessagesPage.inboxFolder().saveTheAttachmentOfTheMessageInDocuments(file.fileName);
     await MessagesPage.navigateTo(headerBarPages.documents);
-    await DocumentsPage.dragSavedDocumentToTrash(file.fileName, file.fileFormat);
+    await DocumentsPage.dragSavedDocumentToTrash(file.fileName);
     await DocumentsPage.sideBar().navigateTo(sidebarPages.trash);
-    await DocumentsPage.trashFolder().checkIfTheDocumentIsVisibleWithName(file.fileName, file.fileFormat);
+    await DocumentsPage.trashFolder().checkIfTheDocumentIsVisibleWithName(file.fileName);
 })
 
 test.afterEach(async ({}, TestInfo) => {
     await Utils.deleteFile(file.filePath);
     if(TestInfo.status==='passed') {
-        await DocumentsPage.trashFolder().deleteAttachmentFromTrash(file.fileName, file.fileFormat);
+        await DocumentsPage.trashFolder().deleteAttachmentFromTrash(file.fileName);
     } else {
         return;
     }
