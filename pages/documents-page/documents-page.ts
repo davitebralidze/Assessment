@@ -1,7 +1,7 @@
 import { DocumentElement } from "../common-page-components/document-element";
 import { test } from "../../page-fixtures/test-options";
-import { DocumentsPageSidebar } from "../documents-page/documentspage-sidebar"
-import { TrashFolderView } from "../documents-page/documentspage-trashfolderview"
+import { DocumentsPageSidebar } from "../documents-page/sidebar-component"
+import { TrashFolderView } from "../documents-page/trash-folder-view"
 
 export class DocumentsPage {
   

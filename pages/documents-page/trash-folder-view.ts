@@ -1,7 +1,7 @@
 import { getPage, test } from "../../page-fixtures/test-options";
 import { ButtonElement } from "../common-page-components/button-element";
 import { DocumentElement } from "../common-page-components/document-element";
-import { DeletePopup } from "./documentspage-deletepopup";
+import { DeletePopup } from "./delete-popup";
 
 export class TrashFolderView {
   //#region Locators

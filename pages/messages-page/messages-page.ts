@@ -1,8 +1,8 @@
 import { getPage, test } from "../../page-fixtures/test-options";
 import { ButtonElement } from "../common-page-components/button-element";
-import { NewMessageForm } from "./messagespage-newmessage-form";
-import { InboxFolderView } from "../messages-page/messagespage-inboxfolderview"
-import { MessagesSidebarComponent } from "../messages-page/messagespage-sidebar-component";
+import { NewMessageForm } from "./new-message-form";
+import { InboxFolderView } from "./inbox-folder-view"
+import { MessagesSidebarComponent } from "./sidebar-component";
 import { HeaderBar, headerBarPages } from "../common-page-components/headerbar-component";
 
 export class MessagesPage {

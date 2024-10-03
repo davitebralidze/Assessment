@@ -5,7 +5,7 @@ import { LandingPage } from '../pages/landing-page/landing-page'
 import { LogInPage } from '../pages/login-page/login-page'
 import { MessagesPage } from '../pages/messages-page/messages-page'
 import { DocumentsPage } from '../pages/documents-page/documents-page'
-import { documentsSidebarPages } from '../pages/documents-page/documentspage-sidebar'
+import { documentsSidebarPages } from '../pages/documents-page/sidebar-component'
 import { headerBarPages } from '../pages/common-page-components/headerbar-component'
 import { Utils } from '../utils/utils'
 const credentials = require('../credentials.json')
