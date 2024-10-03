@@ -9,7 +9,7 @@ import { sidebarPages } from '../page-components/documentspage-sidebar'
 import { headerBarPages } from '../page-components/headerbar-component'
 import { Utils } from '../utils/utils'
 const credentials = require('../credentials.json')
-const subject = faker.string.alphanumeric({length: 10});
+const subject = faker.string.alphanumeric({length: 10})
 let file;
 //#endregion
 
