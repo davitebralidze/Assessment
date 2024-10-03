@@ -1,8 +1,7 @@
-import { getPage, test } from "../page-fixtures/test-options";
-import { ButtonElement } from "./button-element";
-import { InputElement } from "./input-element";
-import { CheckboxElement } from "./checkbox-element";
-import { Utils } from "../utils/utils";
+import { getPage, test } from "../../page-fixtures/test-options";
+import { ButtonElement } from "../common-page-components/button-element";
+import { InputElement } from "../common-page-components/input-element";
+import { CheckboxElement } from "../common-page-components/checkbox-element";
 
 
 export class NewMessageForm {

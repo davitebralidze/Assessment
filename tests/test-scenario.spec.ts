@@ -1,12 +1,12 @@
 //#region Imports & Declarations
 import { faker } from '@faker-js/faker'
 import { test } from '../page-fixtures/test-options'
-import { LandingPage } from '../pages/landing-page'
-import { LogInPage } from '../pages/login-page'
-import { MessagesPage } from '../pages/messages-page'
-import { DocumentsPage } from '../pages/documents-page'
-import { sidebarPages } from '../page-components/documentspage-sidebar'
-import { headerBarPages } from '../page-components/headerbar-component'
+import { LandingPage } from '../pages/landing-page/landing-page'
+import { LogInPage } from '../pages/login-page/login-page'
+import { MessagesPage } from '../pages/messages-page/messages-page'
+import { DocumentsPage } from '../pages/documents-page/documents-page'
+import { documentsSidebarPages } from '../pages/documents-page/documentspage-sidebar'
+import { headerBarPages } from '../pages/common-page-components/headerbar-component'
 import { Utils } from '../utils/utils'
 const credentials = require('../credentials.json')
 const subject = faker.string.alphanumeric({length: 10})
@@ -28,7 +28,7 @@ test('test assessment', async({})=>{
     await MessagesPage.inboxFolder().saveTheAttachmentOfTheMessageInDocuments(file.fileName);
     await MessagesPage.navigateTo(headerBarPages.documents);
     await DocumentsPage.dragSavedDocumentToTrash(file.fileName);
-    await DocumentsPage.sideBar().navigateTo(sidebarPages.trash);
+    await DocumentsPage.sideBar().navigateTo(documentsSidebarPages.trash);
     await DocumentsPage.trashFolder().checkIfTheDocumentIsVisibleWithName(file.fileName);
 })
 

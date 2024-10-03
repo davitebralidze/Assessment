@@ -1,6 +1,6 @@
-import { getPage, test } from "../page-fixtures/test-options";
-import { InputElement } from "../page-components/input-element"
-import { ButtonElement } from "../page-components/button-element";
+import { getPage, test } from "../../page-fixtures/test-options";
+import { InputElement } from "../common-page-components/input-element"
+import { ButtonElement } from "../common-page-components/button-element";
 export class LogInPage {
 
     //#region Locators

@@ -1,6 +1,6 @@
-import { getPage, test } from "../page-fixtures/test-options";
-import { BaseElement } from "./base-element";
-import { ButtonElement } from "./button-element";
+import { getPage, test } from "../../page-fixtures/test-options";
+import { BaseElement } from "../common-page-components/base-element"
+import { ButtonElement } from "../common-page-components/button-element";
 
 export class DocumentsPageSidebar extends BaseElement {
   name: string = this.constructor.name;
@@ -18,9 +18,9 @@ export class DocumentsPageSidebar extends BaseElement {
     });
   }
 
-  async navigateTo(page: sidebarPages) {
+  async navigateTo(page: documentsSidebarPages) {
     switch (page) {
-      case sidebarPages.trash:
+      case documentsSidebarPages.trash:
         await test.step("Navigate to trash", async () => {
           await this.clickOnTrashButton();
         });
@@ -29,6 +29,6 @@ export class DocumentsPageSidebar extends BaseElement {
   }
 }
 
-export enum sidebarPages {
+export enum documentsSidebarPages {
   trash,
 }

@@ -1,6 +1,6 @@
-import { getPage, test } from "../page-fixtures/test-options";
-import { ButtonElement } from "./button-element";
-import { DocumentElement } from "./document-element";
+import { getPage, test } from "../../page-fixtures/test-options";
+import { ButtonElement } from "../common-page-components/button-element";
+import { DocumentElement } from "../common-page-components/document-element";
 import { DeletePopup } from "./documentspage-deletepopup";
 
 export class TrashFolderView {

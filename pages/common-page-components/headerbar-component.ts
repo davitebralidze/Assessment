@@ -1,4 +1,4 @@
-import { getPage, test } from "../page-fixtures/test-options";
+import { getPage, test } from "../../page-fixtures/test-options";
 import { BaseElement } from "./base-element";
 import { ButtonElement } from "./button-element";
 

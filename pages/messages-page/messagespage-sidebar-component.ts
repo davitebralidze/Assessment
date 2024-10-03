@@ -1,6 +1,6 @@
-import { getPage, test } from "../page-fixtures/test-options";
-import { BaseElement } from "./base-element";
-import { ButtonElement } from "./button-element";
+import { getPage, test } from "../../page-fixtures/test-options";
+import { BaseElement } from "../common-page-components/base-element"
+import { ButtonElement } from "../common-page-components/button-element";
 
 export class MessagesSidebarComponent extends BaseElement {
   name: string = this.constructor.name;
@@ -18,9 +18,9 @@ export class MessagesSidebarComponent extends BaseElement {
     });
   }
 
-  async navigateTo(page: sidebarPages) {
+  async navigateTo(page: messagesSidebarPages) {
     switch (page) {
-      case sidebarPages.inbox:
+      case messagesSidebarPages.inbox:
         await test.step("Navigate to inbox", async () => {
           await this.clickOnInboxButton();
         });
@@ -29,6 +29,6 @@ export class MessagesSidebarComponent extends BaseElement {
   }
 }
 
-export enum sidebarPages {
+export enum messagesSidebarPages {
   inbox,
 }

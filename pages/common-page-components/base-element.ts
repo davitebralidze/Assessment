@@ -1,5 +1,5 @@
 import { Locator } from '@playwright/test'
-import { test } from '../page-fixtures/test-options'
+import { test } from '../../page-fixtures/test-options'
 
 export class BaseElement {
 

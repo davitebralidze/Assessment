@@ -1,5 +1,5 @@
-import { getPage, test } from "../page-fixtures/test-options";
-import { ButtonElement } from "./button-element";
+import { getPage, test } from "../../page-fixtures/test-options";
+import { ButtonElement } from "../common-page-components/button-element";
 
 export class DeletePopup {
 

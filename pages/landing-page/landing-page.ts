@@ -1,5 +1,5 @@
-import { ButtonElement } from "../page-components/button-element";
-import { getPage, test } from "../page-fixtures/test-options";
+import { ButtonElement } from "../common-page-components/button-element";
+import { getPage, test } from "../../page-fixtures/test-options"
 
 export class LandingPage {
 

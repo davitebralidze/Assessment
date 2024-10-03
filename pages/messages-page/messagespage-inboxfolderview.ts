@@ -1,7 +1,7 @@
-import { getPage, test } from "../page-fixtures/test-options";
-import { MessagesPage } from "../pages/messages-page";
-import { BaseElement } from "./base-element";
-import { ButtonElement } from "./button-element";
+import { getPage, test } from "../../page-fixtures/test-options";
+import { MessagesPage } from "./messages-page";
+import { BaseElement } from "../common-page-components/base-element";
+import { ButtonElement } from "../common-page-components/button-element";
 import { FolderSelectionPopup } from "./messagespage-folderselectionpopup";
 
 export class InboxFolderView {
