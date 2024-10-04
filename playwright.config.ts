@@ -7,7 +7,11 @@ export default defineConfig({
     baseURL: "https://mailfence.com/",
     trace: "on-first-retry",
     screenshot: "only-on-failure",
-    video: "on"
+    video: "on",
+    //Set access token globally, this avoids writing headers in the requests (it will take autoamtically)
+    // extraHTTPHeaders: {
+    //   'Authorization': `Token ${process.env.ACCESS_TOKEN}`
+    // }
   },
 
   projects: [
