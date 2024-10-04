@@ -11,6 +11,9 @@ export default defineConfig({
   },
 
   projects: [
+    {name: "setup", testMatch: 'auth.setup.ts'},
+    {name: "API-auth-test", testMatch: "api-auth.spec.ts", use: {browserName: 'chromium', storageState: '.auth/user.json'}, dependencies: ["setup"] },
+
     {
       name: "chromium",
       testMatch: ["test-scenario.spec.ts", "api-interception.spec.ts", "api-token.spec.ts"],
