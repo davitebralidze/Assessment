@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 import PDFDocument from 'pdfkit';
 const { faker } = require('@faker-js/faker');
+import { FileFormat } from '../enums/enums';
 
 export class Utils {
 
@@ -38,10 +39,4 @@ export class Utils {
             fs.rmSync((folderPath), { recursive: true, force: true });
         }
     }
-}
-
-export enum FileFormat {
-    TXT = 'txt',
-    DOCX = 'docx',
-    PDF = 'pdf'
 }

@@ -7,7 +7,8 @@ import { MessagesPage } from '../pages/messages-page/messages-page'
 import { DocumentsPage } from '../pages/documents-page/documents-page'
 import { documentsSidebarPages } from '../pages/documents-page/sidebar-component'
 import { headerBarPages } from '../pages/common-page-components/headerbar-component'
-import { FileFormat, Utils } from '../utils/utils'
+import { Utils } from '../utils/utils'
+import { FileFormat } from '../enums/enums'
 const credentials = require('../credentials.json')
 const subject = faker.string.alphanumeric({length: 10})
 let file;
