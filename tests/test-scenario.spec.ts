@@ -7,14 +7,14 @@ import { MessagesPage } from '../pages/messages-page/messages-page'
 import { DocumentsPage } from '../pages/documents-page/documents-page'
 import { documentsSidebarPages } from '../pages/documents-page/sidebar-component'
 import { headerBarPages } from '../pages/common-page-components/headerbar-component'
-import { Utils } from '../utils/utils'
+import { FileFormat, Utils } from '../utils/utils'
 const credentials = require('../credentials.json')
 const subject = faker.string.alphanumeric({length: 10})
 let file;
 //#endregion
 
 test.beforeEach(async({})=>{
-    file = await Utils.createTestFile(faker.string.alphanumeric({length: 10}), 'pdf');
+    file = await Utils.createTestFile(FileFormat.TXT);
 })
 
 test('test assessment', async({})=>{

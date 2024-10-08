@@ -1,4 +1,5 @@
 import { defineConfig } from "@playwright/test";
+require('dotenv').config();
 
 export default defineConfig({
   reporter: [["allure-playwright"]],

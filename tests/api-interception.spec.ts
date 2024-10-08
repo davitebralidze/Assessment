@@ -52,5 +52,5 @@ test('API Login and store token', async ({ request }) => {
   
   process.env.API_TOKEN = apiToken;
   
-  console.log('Token recieved from env temp var: ' + process.env.ACCESS_TOKEN)
+  console.log('Token recieved from env temp var: ' + process.env.API_TOKEN)
   });
