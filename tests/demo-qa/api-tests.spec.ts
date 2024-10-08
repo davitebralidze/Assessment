@@ -1,8 +1,9 @@
-import { test, expect } from "@playwright/test"
+import { getRequest, test } from "../../page-fixtures/api-options"
+import { expect } from "@playwright/test"
 import { faker } from "@faker-js/faker"
 
 test('Registering with valid credentials', async ({request})=> {
-    const response = await request.post(`${process.env.DEMOQA_URL}/Account/v1/User`, {
+    const response = await getRequest().post(`${process.env.DEMOQA_URL}/Account/v1/User`, {
         data: {
             userName: faker.internet.userName(),
             password: "ASDasd!@#123"
@@ -12,7 +13,7 @@ test('Registering with valid credentials', async ({request})=> {
 })
 
 test('Registering with invalid credentials', async ({request})=> {
-    const response = await request.post(`${process.env.DEMOQA_URL}/Account/v1/User`, {
+    const response = await getRequest().post(`${process.env.DEMOQA_URL}/Account/v1/User`, {
         data: {
             userName: faker.string.alphanumeric(500),
             password: "ASDasd!@#123"
