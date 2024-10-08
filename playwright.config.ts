@@ -11,14 +11,14 @@ export default defineConfig({
     video: "on",
     //Set access token globally, this avoids writing headers in the requests (it will take autoamtically)
     // extraHTTPHeaders: {
-    //   'Authorization': `Token ${process.env.ACCESS_TOKEN}`
+    //   'Authorization': `Token ${process.env.API_KEY}`
     // }
   },
 
   projects: [
     {
       name: "chromium",
-      testMatch: ["test-scenario.spec.ts", "api-interception.spec.ts"],
+      testMatch: ["test-scenario.spec.ts", "api-interception.spec.ts", "api-tests.spec.ts"],
       use: { browserName: 'chromium', baseURL: "https://mailfence.com/", viewport: {width: 1280, height: 720} },
     },
 

@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import fruits from "../json-files/fruits.json"
+import fruits from "../../json-files/fruits.json"
 
 test("intercept and modify API", async ({ page }) => {
   await page.route("*/**/api/v1/fruits", async (route) => {

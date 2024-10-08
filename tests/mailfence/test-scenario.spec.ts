@@ -1,15 +1,15 @@
 //#region Imports & Declarations
 import { faker } from '@faker-js/faker'
-import { test } from '../page-fixtures/test-options'
-import { LandingPage } from '../pages/landing-page/landing-page'
-import { LogInPage } from '../pages/login-page/login-page'
-import { MessagesPage } from '../pages/messages-page/messages-page'
-import { DocumentsPage } from '../pages/documents-page/documents-page'
-import { documentsSidebarPages } from '../pages/documents-page/sidebar-component'
-import { headerBarPages } from '../pages/common-page-components/headerbar-component'
-import { Utils } from '../utils/utils'
-import { FileFormat } from '../enums/enums'
-const credentials = require('../credentials.json')
+import { test } from '../../page-fixtures/test-options'
+import { LandingPage } from '../../pages/landing-page/landing-page'
+import { LogInPage } from '../../pages/login-page/login-page'
+import { MessagesPage } from '../../pages/messages-page/messages-page'
+import { DocumentsPage } from '../../pages/documents-page/documents-page'
+import { documentsSidebarPages } from '../../pages/documents-page/sidebar-component'
+import { headerBarPages } from '../../pages/common-page-components/headerbar-component'
+import { Utils } from '../../utils/utils'
+import { FileFormat } from '../../enums/enums'
+import credentials from '../../credentials.json'
 const subject = faker.string.alphanumeric({length: 10})
 let file;
 //#endregion
