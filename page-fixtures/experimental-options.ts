@@ -1,51 +1,44 @@
-import { Page, test as base, APIRequestContext } from "@playwright/test";
+import {APIRequestContext, Page, test as base } from "@playwright/test";
 import { Utils } from "../utils/utils";
 
 export type TestOptions = {
-  customFixture: string;
-  customPage?: Page; // Make customPage optional
-  customRequest?: APIRequestContext; // Make customRequest optional
+  customFixtureUI: Page;
+  customFixtureAPI: APIRequestContext;
+  customPage: Page;
+  customRequest: APIRequestContext;
 };
 
-let customPage: Page | undefined;
-let customRequest: APIRequestContext | undefined;
+let customPage: Page;
+let customRequest: APIRequestContext;
 
 export const test = base.extend<TestOptions>({
-  customFixture: [
-    async ({ page, request }, use) => {
-      await Utils.deleteFolder('allure-results');
-
-      // Determine which context to use based on parameters or usage
-      if (page) {
-        customPage = page;
-        await page.goto("/");
-      } else {
-        customRequest = request;
-      }
-
-      await use("");
-
-      if (customPage) {
-        await customPage.close();
-        await Utils.deleteFolder('test-results');
-      }
-    },
-    { auto: true }
-  ]
+  customFixtureUI: async ({ page, request }, use) => {
+    await Utils.deleteFolder('allure-results');
+    customPage = page;
+    customRequest = request;
+    await page.goto("/");
+    await use(customPage);
+    await page.close();
+    await Utils.deleteFolder('test-results');
+  },
+  customFixtureAPI: async ({ request }, use) => {
+    customRequest = request;
+    await use(customRequest);
+  },
 });
 
 /**
  * Returns the current Page.
- * @returns {Page | undefined} The current Page.
+ * @returns {Page} The current Page.
  */
-export function getPage() {
+export function getPage(): Page {
   return customPage;
 }
 
 /**
- * Returns the current API request context.
- * @returns {APIRequestContext | undefined} The current API request context.
+ * Returns the current APIRequestContext.
+ * @returns {APIRequestContext} The current APIRequestContext.
  */
-export function getRequest() {
+export function getRequest(): APIRequestContext {
   return customRequest;
 }

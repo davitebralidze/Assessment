@@ -1,4 +1,4 @@
-import { getPage, test } from "../../page-fixtures/test-options";
+import { getPage, test } from "../../page-fixtures/experimental-options";
 import { ButtonElement } from "../common-page-components/button-element";
 
 export class FolderSelectionPopup {

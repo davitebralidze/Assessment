@@ -16,7 +16,7 @@ export const test = base.extend<TestOptions>({
 
 /**
  * Returns the current Page.
- * @returns {Request} The current Page.
+ * @returns {APIRequestContext} The current Page.
  */
 export function getRequest() {
     return customRequest;

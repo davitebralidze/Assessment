@@ -1,6 +1,6 @@
 //#region Imports & Declarations
 import { faker } from '@faker-js/faker'
-import { test } from '../../page-fixtures/test-options'
+import { test } from "../../page-fixtures/experimental-options"
 import { LandingPage } from '../../pages/landing-page/landing-page'
 import { LogInPage } from '../../pages/login-page/login-page'
 import { MessagesPage } from '../../pages/messages-page/messages-page'
@@ -18,7 +18,7 @@ test.beforeEach(async({})=>{
     file = await Utils.createTestFile(FileFormat.TXT);
 })
 
-test('test assessment', async({})=>{
+test('test assessment', async({customFixtureUI})=>{
     await LandingPage.clickOnLogInButton();
     await LogInPage.logIn(credentials.userEmail, credentials.password);
     await MessagesPage.navigateTo(headerBarPages.messages);

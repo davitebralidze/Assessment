@@ -1,4 +1,4 @@
-import { getPage, test } from "../../page-fixtures/test-options";
+import { getPage, test } from "../../page-fixtures/experimental-options";
 import { BaseElement } from "../common-page-components/base-element"
 import { ButtonElement } from "../common-page-components/button-element";
 

@@ -1,5 +1,5 @@
 import { DocumentElement } from "../common-page-components/document-element";
-import { test } from "../../page-fixtures/test-options";
+import { test } from "../../page-fixtures/experimental-options";
 import { DocumentsPageSidebar } from "../documents-page/sidebar-component"
 import { TrashFolderView } from "../documents-page/trash-folder-view"
 
