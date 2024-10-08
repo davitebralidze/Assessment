@@ -19,6 +19,5 @@ test('Registering with invalid credentials', async ({})=> {
             password: "ASDasd!@#123"
         }
     })
-    console.log(faker.string.alphanumeric(1000))
     expect(response.status()).toBe(502)
 })
