@@ -29,7 +29,7 @@ test('test assessment', async({})=>{
     await MessagesPage.sendEmail(credentials.userEmail, subject, file.filePath);
     await MessagesPage.inboxFolder().waitForTheMessageInInbox(subject);
     await MessagesPage.inboxFolder().openTheMessage(subject);
-    await MessagesPage.inboxFolder().saveTheAttachmentOfTheMessageInDocuments(file.fileName);
+    await MessagesPage.inboxFolder().saveTheAttachmentOfTheOpenedMessageInDocuments();
     await MessagesPage.navigateTo(headerBarPages.documents);
     await DocumentsPage.dragSavedDocumentToTrash(file.fileName);
     await DocumentsPage.sideBar().navigateTo(documentsSidebarPages.trash);

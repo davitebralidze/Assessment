@@ -35,7 +35,7 @@ export class InboxFolderView {
         })
       }
     
-    async saveTheAttachmentOfTheMessageInDocuments(attachemntName: string) {
+    async saveTheAttachmentOfTheOpenedMessageInDocuments() {
         await test.step(`Save the attachment of the opened message in the Documents folder`, async ()=>{
           await this.attachmentOfTheReceivedMessage().hover();
           await this.optionsDropdownButtonOfTheAttachentOfTheReceivedMessage().click();

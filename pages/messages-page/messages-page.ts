@@ -50,6 +50,7 @@ export class MessagesPage {
             await MessagesPage.headerBar().clickOnDocumentsButton();
           });
           break;
+          default: throw new Error(`The option you provided for navigated is unavailable. Provided option ${page}`)
       }
     }
     //#endregion

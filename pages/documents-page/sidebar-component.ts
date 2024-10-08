@@ -25,6 +25,7 @@ export class DocumentsPageSidebar extends BaseElement {
           await this.clickOnTrashButton();
         });
         break;
+        default: throw new Error(`The option you provided for navigated is unavailable. Provided option ${page}`)
     }
   }
 }
