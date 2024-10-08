@@ -4,6 +4,7 @@ import { Utils } from "../utils/utils";
 export type TestOptions = {
   customFixtureUI: Page;
   customFixtureAPI: APIRequestContext;
+  baseFixture: string;
   customPage: Page;
   customRequest: APIRequestContext;
 };
@@ -12,6 +13,15 @@ let customPage: Page;
 let customRequest: APIRequestContext;
 
 export const test = base.extend<TestOptions>({
+  baseFixture: [async ({ page, request }, use) => {
+    await Utils.deleteFolder('allure-results');
+    customPage = page;
+    customRequest = request;
+    await page.goto("/");
+    await use("");
+    await page.close();
+    await Utils.deleteFolder('test-results');
+  }, {auto: true}],
   customFixtureUI: async ({ page, request }, use) => {
     await Utils.deleteFolder('allure-results');
     customPage = page;
