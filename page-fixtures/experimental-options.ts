@@ -4,7 +4,7 @@ import { Utils } from "../utils/utils";
 export type TestOptions = {
   UIFixture: Page;
   APIFixture: APIRequestContext;
-  baseFixture: string;
+  MixedFixture: string;
   customPage: Page;
   customRequest: APIRequestContext;
 };
@@ -13,7 +13,8 @@ let customPage: Page;
 let customRequest: APIRequestContext;
 
 export const test = base.extend<TestOptions>({
-  baseFixture: [async ({ page, request }, use) => {
+  MixedFixture: async ({ page, request }, use) => {
+    console.log('BasicFixture')
     await Utils.deleteFolder('allure-results');
     customPage = page;
     customRequest = request;
@@ -21,8 +22,9 @@ export const test = base.extend<TestOptions>({
     await use("");
     await page.close();
     await Utils.deleteFolder('test-results');
-  }, {auto: true}],
+  },
   UIFixture: async ({ page, request }, use) => {
+    console.log('UIFixture')
     await Utils.deleteFolder('allure-results');
     customPage = page;
     customRequest = request;
@@ -32,6 +34,8 @@ export const test = base.extend<TestOptions>({
     await Utils.deleteFolder('test-results');
   },
   APIFixture: async ({ request }, use) => {
+    
+    console.log('APIFixture')
     customRequest = request;
     await use(customRequest);
   },

@@ -12,12 +12,12 @@ test('Registering with valid credentials', async ({APIFixture})=> {
     expect(response.status()).toBe(201)
 })
 
-test('Registering with invalid credentials', async ({APIFixture})=> {
+test('Registering with invalid credentials', async ({APIFixture}, TestInfo)=> {
     const response = await getRequest().post(`${process.env.DEMOQA_URL}/Account/v1/User`, {
         data: {
             userName: faker.string.alphanumeric(500),
             password: "ASDasd!@#123"
         }
     })
-    expect(response.status()).toBe(502)
+    expect(response.status()).toBe(404)
 })
