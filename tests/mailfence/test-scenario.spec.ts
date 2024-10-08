@@ -18,7 +18,7 @@ test.beforeEach(async({})=>{
     file = await Utils.createTestFile(FileFormat.TXT);
 })
 
-test('test assessment', async({customFixtureUI})=>{
+test('test assessment', async({UIFixture})=>{
     await LandingPage.clickOnLogInButton();
     await LogInPage.logIn(credentials.userEmail, credentials.password);
     await MessagesPage.navigateTo(headerBarPages.messages);

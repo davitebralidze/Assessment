@@ -2,8 +2,8 @@ import {APIRequestContext, Page, test as base } from "@playwright/test";
 import { Utils } from "../utils/utils";
 
 export type TestOptions = {
-  customFixtureUI: Page;
-  customFixtureAPI: APIRequestContext;
+  UIFixture: Page;
+  APIFixture: APIRequestContext;
   baseFixture: string;
   customPage: Page;
   customRequest: APIRequestContext;
@@ -22,7 +22,7 @@ export const test = base.extend<TestOptions>({
     await page.close();
     await Utils.deleteFolder('test-results');
   }, {auto: true}],
-  customFixtureUI: async ({ page, request }, use) => {
+  UIFixture: async ({ page, request }, use) => {
     await Utils.deleteFolder('allure-results');
     customPage = page;
     customRequest = request;
@@ -31,7 +31,7 @@ export const test = base.extend<TestOptions>({
     await page.close();
     await Utils.deleteFolder('test-results');
   },
-  customFixtureAPI: async ({ request }, use) => {
+  APIFixture: async ({ request }, use) => {
     customRequest = request;
     await use(customRequest);
   },
