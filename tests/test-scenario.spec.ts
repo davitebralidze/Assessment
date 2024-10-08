@@ -16,9 +16,6 @@ let file;
 
 test.beforeEach(async({})=>{
     file = await Utils.createTestFile(FileFormat.TXT);
-    console.log(file.filePath)
-    console.log(file.fileFormat)
-    console.log(file.fileName)
 })
 
 test('test assessment', async({})=>{
