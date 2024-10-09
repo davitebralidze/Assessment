@@ -1,6 +1,5 @@
 import { test } from "../../page-fixtures/experimental-options"
 import { expect } from "@playwright/test"
-import { faker } from "@faker-js/faker"
 import { API } from "../../utils/api-util"
 import { Endpoint, HTTPMethod } from "../../enums/API-enums"
 import { Utils } from "../../utils/utils"
