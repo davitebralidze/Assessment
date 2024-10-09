@@ -1,4 +1,4 @@
-import { getRequest } from "../../page-fixtures/experimental-options"
+import { getRequest } from "../page-fixtures/experimental-options"
 
 const endpoint = "/Account/v1/User"
 
