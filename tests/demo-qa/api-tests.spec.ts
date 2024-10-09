@@ -1,12 +1,12 @@
-import { getRequest, test } from "../../page-fixtures/experimental-options"
+import { test } from "../../page-fixtures/experimental-options"
 import { expect } from "@playwright/test"
 import { faker } from "@faker-js/faker"
 import { API } from "../../utils/api-util"
-import { HTTPMethod } from "../../enums/enums"
+import { Endpoint, HTTPMethod } from "../../enums/API-enums"
 
 test('Registering with valid credentials', async ({APIFixture})=> {
 
-    const url = `${process.env.DEMOQA_URL}/Account/v1/User`;
+    const url = Endpoint.Register;
     const credentials = 
         {
             userName: faker.internet.userName(),
@@ -15,4 +15,5 @@ test('Registering with valid credentials', async ({APIFixture})=> {
     
     const response = await API.makeCall(HTTPMethod.GET, url, credentials)
     expect(response.status()).toBe(200)
+
 })

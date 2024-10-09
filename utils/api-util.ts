@@ -1,6 +1,6 @@
 import { APIResponse } from "@playwright/test";
 import { getRequest } from "../page-fixtures/experimental-options";
-import { HTTPMethod } from "../enums/enums";
+import { HTTPMethod } from "../enums/API-enums";
 import { Serializable } from "child_process";
 
 export class API {

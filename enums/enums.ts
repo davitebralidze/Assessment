@@ -3,10 +3,3 @@ export enum FileFormat {
     DOCX = 'docx',
     PDF = 'pdf'
 }
-
-export enum HTTPMethod {
-    GET,
-    POST,
-    PUT,
-    DELETE
-}
