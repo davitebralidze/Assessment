@@ -14,7 +14,6 @@ let customRequest: APIRequestContext;
 
 export const test = base.extend<TestOptions>({
   MixedFixture: async ({ page, request }, use) => {
-    console.log('BasicFixture')
     await Utils.deleteFolder('allure-results');
     customPage = page;
     customRequest = request;
@@ -24,7 +23,6 @@ export const test = base.extend<TestOptions>({
     await Utils.deleteFolder('test-results');
   },
   UIFixture: async ({ page, request }, use) => {
-    console.log('UIFixture')
     await Utils.deleteFolder('allure-results');
     customPage = page;
     customRequest = request;
@@ -34,8 +32,6 @@ export const test = base.extend<TestOptions>({
     await Utils.deleteFolder('test-results');
   },
   APIFixture: async ({ request }, use) => {
-    
-    console.log('APIFixture')
     customRequest = request;
     await use(customRequest);
   },
