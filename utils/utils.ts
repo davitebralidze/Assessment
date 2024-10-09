@@ -39,4 +39,8 @@ export class Utils {
             fs.rmSync((folderPath), { recursive: true, force: true });
         }
     }
+
+    static async generateFakeUsername(): Promise<string> {
+        return faker.internet.userName()
+    }
 }

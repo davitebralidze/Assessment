@@ -4,7 +4,7 @@ import { HTTPMethod } from "../enums/API-enums";
 import { Serializable } from "child_process";
 
 export class API {
-    static async makeCall(httpMethod: HTTPMethod, URL: string, body?: object, key?: string): Promise<APIResponse> {
+    static async makeCall(httpMethod: HTTPMethod, URL: string, body?: Serializable, key?: string): Promise<APIResponse> {
         let response: APIResponse;
 
         switch (httpMethod) {

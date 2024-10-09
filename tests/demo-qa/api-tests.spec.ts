@@ -3,17 +3,16 @@ import { expect } from "@playwright/test"
 import { faker } from "@faker-js/faker"
 import { API } from "../../utils/api-util"
 import { Endpoint, HTTPMethod } from "../../enums/API-enums"
+import { Utils } from "../../utils/utils"
 
 test('Registering with valid credentials', async ({APIFixture})=> {
-
-    const url = Endpoint.Register;
     const credentials = 
         {
-            userName: faker.internet.userName(),
+            userName: await Utils.generateFakeUsername(),
             password: "ASDasd!@#123"
         };
-    
-    const response = await API.makeCall(HTTPMethod.GET, url, credentials)
-    expect(response.status()).toBe(200)
+
+    const response = await API.makeCall(HTTPMethod.POST, Endpoint.Register, credentials)
+    expect(response.status()).toBe(201)
 
 })
