@@ -15,7 +15,6 @@ export const test = base.extend<TestOptions>({
     if(testInfo.project.name === "Mailfence") {
       await Utils.deleteFolder('allure-results');
       customPage = page;
-      customRequest = request;
       await page.goto("/");
       await use("");
       await page.close();

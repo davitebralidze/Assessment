@@ -1,6 +1,6 @@
 //#region Imports & Declarations
 import { faker } from '@faker-js/faker'
-import { test } from "../../page-fixtures/experimental-options"
+import { getRequest, test } from "../../page-fixtures/experimental-options"
 import { LandingPage } from '../../pages/landing-page/landing-page'
 import { LogInPage } from '../../pages/login-page/login-page'
 import { MessagesPage } from '../../pages/messages-page/messages-page'
