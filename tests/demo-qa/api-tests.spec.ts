@@ -1,22 +1,18 @@
 import { test } from "../../page-fixtures/experimental-options"
 import { expect } from "@playwright/test"
-import { API } from "../../utils/api-util"
-import { Endpoint, HTTPMethod } from "../../enums/API-enums"
 import { Utils } from "../../utils/utils"
+import  * as registerUser from "../API/post-account-v1-user" 
 
-test('Registering with valid credentials', async ({APIFixture})=> {
+test('Registering with valid credentials', async ({})=> {
     
-    const credentials = 
+    const credentials: registerUser.requestBody = 
         {
             userName: await Utils.generateFakeUsername(),
             password: "ASDasd!@#123"
         };
 
-    const response = await API.makeCall(HTTPMethod.POST, Endpoint.Register, credentials)
+    const response = await registerUser.makeCall(credentials);
 
-    console.log("Response Status:", response.status());
-    console.log("Response Body:", await response.json());
-
-    expect(response.status()).toBe(201)
+    expect(response.status(), {message: `Status was unsuccessful. Response text: ${await response.text()}`}).toBe(201)
 
 })

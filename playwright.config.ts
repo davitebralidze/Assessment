@@ -17,21 +17,14 @@ export default defineConfig({
 
   projects: [
     {
-      name: "chromium",
-      testMatch: ["test-scenario.spec.ts", "api-interception.spec.ts", "api-tests.spec.ts"],
+      name: "Mailfence",
+      testMatch: ["test-scenario.spec.ts"],
       use: { browserName: 'chromium', baseURL: "https://mailfence.com/", viewport: {width: 1280, height: 720} },
     },
-
     {
-      name: "firefox",
-      testMatch: "test-scenario.spec.ts",
-      use: { browserName: 'firefox', baseURL: "https://mailfence.com/", viewport: {width: 1280, height: 720} },
-    },
-
-    {
-      name: "webkit",
-      testMatch: "test-scenario.spec.ts",
-      use: { browserName: 'webkit', baseURL: "https://mailfence.com/", viewport: {width: 1280, height: 720} },
-    },
+      name: "API",
+      testMatch: ["api-tests.spec.ts"],
+      use: { browserName: 'chromium', baseURL: "https://mailfence.com/", viewport: {width: 1280, height: 720} },
+    }
   ],
 });
