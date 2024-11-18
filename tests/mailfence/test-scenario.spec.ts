@@ -1,6 +1,6 @@
 //#region Imports & Declarations
 import { faker } from '@faker-js/faker'
-import { getRequest, test } from "../../page-fixtures/experimental-options"
+import { test } from "../../page-fixtures/experimental-options"
 import { LandingPage } from '../../pages/landing-page/landing-page'
 import { LogInPage } from '../../pages/login-page/login-page'
 import { MessagesPage } from '../../pages/messages-page/messages-page'
@@ -10,8 +10,9 @@ import { headerBarPages } from '../../pages/common-page-components/headerbar-com
 import { Utils } from '../../utils/utils'
 import { FileFormat } from '../../enums/enums'
 import credentials from '../../credentials.json'
+import { FileObject } from '../../custom-types/custom-types'
 const subject = faker.string.alphanumeric({length: 10})
-let file;
+let file: FileObject;
 //#endregion
 
 test.beforeEach(async({})=>{
