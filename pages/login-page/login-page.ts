@@ -17,7 +17,7 @@ export class LogInPage {
     }
     
     static async enterPassword(password: string) {
-        await test.step(`Fill the Passwprd field with the string: ${password}`, async ()=>{
+        await test.step(`Fill the Password field with the string: ${password}`, async ()=>{
             await this.passwordInputField().fill(password);
         })
     }
