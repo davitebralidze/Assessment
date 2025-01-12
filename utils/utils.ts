@@ -1,6 +1,7 @@
 import PDFDocument from 'pdfkit';
 import { FileObject } from '../custom-types/custom-types';
 import { FileFormat } from '../enums/enums';
+import path from 'path';
 const { faker } = require('@faker-js/faker');
 const fs = require('fs');
 
@@ -37,6 +38,22 @@ export class Utils {
     static async deleteFolder(folderPath: string): Promise<void> {
         if(fs.existsSync(folderPath)) {
             fs.rmSync((folderPath), { recursive: true, force: true });
+        }
+    }
+
+    static async deleteFolderContents(folderPath: string): Promise<void> {
+        if (fs.existsSync(folderPath)) {
+            const files = fs.readdirSync(folderPath); // Get all files and folders inside the directory
+            for (const file of files) {
+                const filePath = path.join(folderPath, file); // Resolve the full path
+                const stats = fs.statSync(filePath); // Get the stats for each item
+                if (stats.isDirectory()) {
+                    await Utils.deleteFolderContents(filePath);
+                    fs.rmdirSync(filePath);
+                } else {
+                    fs.unlinkSync(filePath);
+                }
+            }
         }
     }
 

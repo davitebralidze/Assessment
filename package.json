@@ -2,7 +2,9 @@
   "name": "automationassessment",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "mailfence": "npx playwright test tests/mailfence/test-scenario.spec.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

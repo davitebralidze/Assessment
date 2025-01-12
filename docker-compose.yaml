@@ -1,0 +1,10 @@
+version: '27.4.0'
+services:
+  playwright-test:
+    image: mailfence-project
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    command: npm run mailfence
+    volumes:
+      - ./allure-results/:/app/allure-results

@@ -13,7 +13,7 @@ let customRequest: APIRequestContext;
 export const test = base.extend<TestOptions>({
   customFixture: [async ({ page, request }, use, testInfo: TestInfo) => {
     if(testInfo.project.name === "Mailfence") {
-      await Utils.deleteFolder('allure-results');
+      await Utils.deleteFolderContents('allure-results');
       customPage = page;
       await page.goto("/");
       await use("");
