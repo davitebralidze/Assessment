@@ -6,5 +6,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     command: npm run mailfence
+    # command: sh -c "xvfb-run -a -s '-screen 0 1920x1080x24' npx playwright test tests/mailfence/test-scenario.spec.ts --headed"
+    # This is done in case we want to run in headed mode on different resolutions (P.S. Playwright does no require headed mode for screenshots)
     volumes:
       - ./allure-results/:/app/allure-results

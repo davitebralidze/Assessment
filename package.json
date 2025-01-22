@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "mailfence": "xvfb-run npx playwright test tests/mailfence/test-scenario.spec.ts --headed"
+    "mailfence": "npx playwright test tests/mailfence/test-scenario.spec.ts"
   },
   "keywords": [],
   "author": "",
