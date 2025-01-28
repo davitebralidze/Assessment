@@ -2,11 +2,19 @@ version: '27.4.0'
 services:
   playwright-test:
     image: mailfence-project
-    build: 
+    build:
       context: .
       dockerfile: ./Dockerfile
-    command: npm run mailfence
-    # command: sh -c "xvfb-run -a -s '-screen 0 1920x1080x24' npx playwright test tests/mailfence/test-scenario.spec.ts --headed"
-    # This is done in case we want to run in headed mode on different resolutions (P.S. Playwright does no require headed mode for screenshots)
+    #take into count that playwright does not need headed mode to take screenshots
+    #sh -c <-> This starts a new shell session and executes the command string inside double quotes ("...")
+    #xvfb-run <-> This is a wrapper for X Virtual Framebuffer (Xvfb), which creates a virtual display server
+    #-a <-> This flag tells xvfb-run to automatically select an available display number. By default, xvfb uses DISPLAY=:99. If this display number is already in use, the command will fail. With -a, it avoids conflicts by dynamically picking the next available display.
+    #-s '-screen 0 1920x1080x24' <-> Configures the virtual screen settings for xvfb. The -s flag lets you pass arguments directly to the underlying Xvfb server.
+    ## 0: The screen number (screen 0 is the default in most X11 setups).
+    ## 1920x1080: The resolution of the virtual display. This is important because some GUI applications (like browsers) might fail if the display size is too small.
+    ## 24: The color depth, meaning each pixel can have 24-bit color (8 bits per channel for red, green, and blue).
+    #command: sh -c "xvfb-run -a -s '-screen 0 1920x1080x24' npx playwright test tests/mailfence/test-scenario.spec.ts --headed"
+    command: npm run playwright
     volumes:
       - ./allure-results/:/app/allure-results
+      - ./screenshots/:/app/Screenshots
