@@ -6,7 +6,7 @@ export default defineConfig({
 
   use: {
     baseURL: "https://mailfence.com/",
-    trace: "on-first-retry",
+    trace: "on",
     screenshot: "only-on-failure",
     video: "on",
     //Set access token globally, this avoids writing headers in the requests (it will take automatically)

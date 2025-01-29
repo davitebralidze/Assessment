@@ -18,7 +18,6 @@ export const test = base.extend<TestOptions>({
       await page.goto("/");
       await use("");
       await page.close();
-      await Utils.deleteFolder('test-results');
     } else if (testInfo.project.name === "API"){
       customRequest = request;
       await use("");
